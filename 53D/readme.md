@@ -16,3 +16,4 @@
 * [Android API Levels](https://apilevels.com/)
 * [SDK Platform release notes | Android Developers](https://developer.android.com/studio/releases/platforms)
 * [Coding Conventions | Kotlin Documentation](https://kotlinlang.org/docs/coding-conventions.html)
+* [Compose layout basics](https://developer.android.com/develop/ui/compose/layouts/basics)
