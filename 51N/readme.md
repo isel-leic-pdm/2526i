@@ -28,8 +28,8 @@
   * Intents: explicit and implicit
 #### For reference:
 
-* [Thinking in Compose](https://developer.android.com/develop/ui/compose/mental-model)
-* [Compose layout basics - Jetpack](https://developer.android.com/develop/ui/compose/layouts/basics)Android](https://developer.android.com/develop/ui/views/theming/look-and-feel)
+* [Thinking in Compose](https://developer.android.com/develop/ui/compose/mental-model)
+* [Compose layout basics - Jetpack](https://developer.android.com/develop/ui/compose/layouts/basics)
 * [Tasks and Back Stack](https://developer.android.com/guide/components/activities/tasks-and-back-stack)
 * [Intents and intent filters](https://developer.android.com/guide/components/intents-filters)
   * [Sending the user to another app](https://developer.android.com/training/basics/intents/sending)
