@@ -21,7 +21,7 @@
 * The Activity component as the UI host
   * Basic lifecycle: `onCreate`, `onStart`, `onStop` and `onDestroy`
   * Concurrency model: execution warranties and constraints of lifecycle methods
-* Jetpack Compose (revisions from TDS course)
+* Jetpack Compose 
   * `@Composable` functions: the building blocks of the UI
 * UX: navigating between activities
   * User task and back stack
