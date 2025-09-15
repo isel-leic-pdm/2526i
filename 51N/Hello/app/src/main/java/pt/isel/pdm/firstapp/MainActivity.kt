@@ -1,5 +1,7 @@
 package pt.isel.pdm.firstapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -72,13 +74,31 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                 )
                 { innerPadding ->
-                    Post(
-                        title = "a title",
-                        description = "a description\nwith\n4\nlines",
-                        stars = 2,
-                        hearts = 88,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Column {
+                        Post(
+                            title = "a title",
+                            description = "a description\nwith\n4\nlines",
+                            stars = 2,
+                            hearts = 88,
+                            modifier = Modifier.padding(innerPadding)
+                        )
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, Activity2::class.java)
+                            startActivity(intent)
+                        }) {
+                            Text("Navigate to Activity2")
+                        }
+
+                        Button(onClick = {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.sapo.pt"))
+                            startActivity(intent)
+                        })
+                        {
+                            Text("Open Sapo.pt")
+                        }
+
+
+                    }
                 }
             }
         }
