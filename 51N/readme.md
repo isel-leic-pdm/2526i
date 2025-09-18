@@ -40,7 +40,10 @@
 * UX: navigating between activities
   * User task and back stack
   * Intents: explicit and implicit
-
+* Jetpack Compose
+  * Stateless vs. stateful @Composables, `remember` and `mutableStateOf` 
+  * State hoisting: lifting the state to the parent composable
+* Architecting the UI: introduction
 
 ### Practical Class
 * Goal: Install Android Studio and create a new project (the *Hello Android* app) using Andrdoid Studio's wizard.
@@ -52,3 +55,8 @@
 * [Intents and intent filters](https://developer.android.com/guide/components/intents-filters)
   * [Sending the user to another app](https://developer.android.com/training/basics/intents/sending)
   * [Common Intents](https://developer.android.com/guide/components/intents-common)
+* [State and Jetpack Compose](https://developer.android.com/develop/ui/compose/state#state-and-composition)
+* [Architecting your Compose UI](https://developer.android.com/develop/ui/compose/architecture)
+* [Guide to app architecture](https://developer.android.com/topic/architecture)
+
+  
