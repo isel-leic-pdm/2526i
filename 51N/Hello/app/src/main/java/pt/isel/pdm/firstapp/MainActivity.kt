@@ -1,5 +1,6 @@
 package pt.isel.pdm.firstapp
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -82,12 +83,11 @@ class MainActivity : ComponentActivity() {
                             hearts = 88,
                             modifier = Modifier.padding(innerPadding)
                         )
-                        Button(onClick = {
+
+                        ButtonToNavigate({
                             val intent = Intent(this@MainActivity, Activity2::class.java)
                             startActivity(intent)
-                        }) {
-                            Text("Navigate to Activity2")
-                        }
+                        })
 
                         Button(onClick = {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.sapo.pt"))
@@ -105,6 +105,23 @@ class MainActivity : ComponentActivity() {
     }
 
 
+}
+
+@Composable
+fun ButtonToNavigate(onClick: () -> Unit) {
+    Button(onClick = onClick) {
+        Text("Navigate to Activity2")
+    }
+}
+
+@Composable
+fun ButtonToNavigate_DONOTUSE(activity: Activity) {
+    Button(onClick = {
+        val intent = Intent(activity, Activity2::class.java)
+        activity.startActivity(intent)
+    }) {
+        Text("Navigate to Activity2")
+    }
 }
 
 @Composable
