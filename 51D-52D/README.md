@@ -36,6 +36,9 @@
   * Intents: explicit and implicit
   * User task and back stack
 
+#### Lecture video:
+* [Lecture 02 - Building a Compose UI](https://www.youtube.com/live/9pjAzan0kSQ?si=JhYsDhI2_X3mlCe9)
+
 #### For reference:
 * [Thinking in Compose | Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/mental-model)
 * [Material components in Compose](https://developer.android.com/develop/ui/compose/components)
@@ -45,3 +48,30 @@
 * [Intents and intent filters | Android Developers](https://developer.android.com/guide/components/intents-filters)
   * [Sending the user to another app | Android Developers](https://developer.android.com/guide/components/intents-filters)
   * [Common intents | Android Developers](https://developer.android.com/guide/components/intents-common)
+
+
+
+## Week 3 - 22/09/2025
+### Subject: Building a UI with Jetpack Compose - Presentation State
+
+#### Topic breakdown:
+* Jetpack Compose:
+  * Stateful @Composable functions
+    * State and recomposition
+    * State management: `remember` and `mutableStateOf`
+  * State hoisting
+    * Lifting state up
+    * Event callbacks
+* Automatic testing in Android
+  * Unit tests with JUnit
+  * Instrumented UI tests with Espresso
+  * Testing @Composable functions with Compose Testing
+
+#### Lecture video:
+* [Lecture 03 - Building a Compose UI](https://www.youtube.com/live/9pjAzan0kSQ?si=JhYsDhI2_X3mlCe9)
+
+#### For reference:
+* [State and Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/state#managing-state) 
+* [Architecting your Compose UI | Jetpack Compose | Android Developers](https://developer.android.com/jetpack/compose/architecture)
+* [Guide to application architecture](https://developer.android.com/jetpack/guide)
+* [Test apps on Android](https://developer.android.com/training/testing) 
