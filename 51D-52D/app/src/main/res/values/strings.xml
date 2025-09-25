@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Demos Host Application</string>
+    <string name="app_name">Demos Application</string>
+    <string name="main_title">PDM Course Demos</string>
+    <string name="main_navigate_crowd_tally" translatable="false">Crowd Tally Demo</string>
 </resources>

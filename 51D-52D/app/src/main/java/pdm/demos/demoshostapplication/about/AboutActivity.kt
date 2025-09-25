@@ -5,38 +5,50 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.ui.Modifier
-import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 import androidx.core.net.toUri
+import pdm.demos.demoshostapplication.about.AboutScreenNavigationIntent.Back
+import pdm.demos.demoshostapplication.about.AboutScreenNavigationIntent.OpenUrl
+import pdm.demos.demoshostapplication.about.AboutScreenNavigationIntent.SendEmail
+import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 
+/**
+ * The activity that hosts the about screen.
+ */
 class AboutActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DemosHostApplicationTheme {
-                Scaffold(modifier = Modifier.Companion.fillMaxSize()) { innerPadding ->
-                    AboutScreen(
-                        onNavigate = { handleNavigation(it) },
-                        modifier = Modifier.padding(paddingValues = innerPadding)
-                    )
-                }
+                AboutScreen(onNavigate = { handleNavigation(it) })
             }
         }
     }
 
     private fun handleNavigation(it: AboutScreenNavigationIntent) {
         when (it) {
-            is AboutScreenNavigationIntent.YouTube -> navigateToURL(it.destination)
+            is OpenUrl -> navigateToURL(destination = it.destination.toString())
+            is SendEmail -> navigateToEmail(to = it.to, subject = it.subject)
+            Back -> finish()
         }
     }
 
     private fun navigateToURL(destination: String) {
         val webpage: Uri = destination.toUri()
         val intent = Intent(Intent.ACTION_VIEW, webpage)
-        startActivity(intent)
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    private fun navigateToEmail(to: String, subject: String) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = "mailto:".toUri()
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
     }
 }
