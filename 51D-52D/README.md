@@ -74,4 +74,5 @@
 * [State and Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/state#managing-state) 
 * [Architecting your Compose UI | Jetpack Compose | Android Developers](https://developer.android.com/jetpack/compose/architecture)
 * [Guide to application architecture](https://developer.android.com/jetpack/guide)
-* [Test apps on Android](https://developer.android.com/training/testing) 
+* [Test your Compose layout](https://developer.android.com/develop/ui/compose/testing) 
+* [Test apps on Android](https://developer.android.com/training/testing)
