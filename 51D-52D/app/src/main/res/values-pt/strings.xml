@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Demos Application</string>
+    <string name="main_title">Demos de PDM</string>
+    <string name="main_navigate_crowd_tally">Demo Contador</string>
+</resources>
