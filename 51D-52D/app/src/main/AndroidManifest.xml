@@ -32,7 +32,10 @@
         </activity>
 
         <activity android:name=".about.AboutActivity" />
-        <activity android:name=".crowdtally.CrowdTallyActivity" />
+
+        <activity
+            android:name=".crowdtally.CrowdTallyActivity"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

@@ -2,4 +2,12 @@
     <string name="app_name">Demos Application</string>
     <string name="main_title">PDM Course Demos</string>
     <string name="main_navigate_crowd_tally" translatable="false">Crowd Tally Demo</string>
+
+    <string name="crowd_tally_title" translatable="false">Crowd Tally</string>
+    <string name="crowd_tally_settings_title">Settings</string>
+    <string name="crowd_tally_save_button_text">Save</string>
+    <string name="crowd_tally_cancel_button_text">Cancel</string>
+    <string name="crowd_tally_capacity_input_hint">Enter maximum number of people</string>
+    <string name="crowd_tally_capacity_label">Capacity:</string>
+
 </resources>

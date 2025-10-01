@@ -22,6 +22,7 @@ class TopBarTests {
 
         composeTestRule.onNodeWithTag(testTag = BACK_BUTTON_TAG).assertExists()
         composeTestRule.onNodeWithTag(testTag = INFO_BUTTON_TAG).assertDoesNotExist()
+        composeTestRule.onNodeWithTag(testTag = CONFIG_BUTTON_TAG).assertDoesNotExist()
     }
 
     @Test
@@ -34,21 +35,37 @@ class TopBarTests {
 
         composeTestRule.onNodeWithTag(testTag = BACK_BUTTON_TAG).assertDoesNotExist()
         composeTestRule.onNodeWithTag(testTag = INFO_BUTTON_TAG).assertExists()
+        composeTestRule.onNodeWithTag(testTag = CONFIG_BUTTON_TAG).assertDoesNotExist()
     }
 
     @Test
-    fun topBar_withBothNavigationOptionsAndTitle_rendersCorrectly() {
+    fun topBar_withOnlyConfigNavigation_rendersCorrectly() {
+        composeTestRule.setContent {
+            TopBar(
+                onConfigurationIntent = { }
+            )
+        }
+
+        composeTestRule.onNodeWithTag(testTag = BACK_BUTTON_TAG).assertDoesNotExist()
+        composeTestRule.onNodeWithTag(testTag = INFO_BUTTON_TAG).assertDoesNotExist()
+        composeTestRule.onNodeWithTag(testTag = CONFIG_BUTTON_TAG).assertExists()
+    }
+
+    @Test
+    fun topBar_withAllNavigationOptionsAndTitle_rendersCorrectly() {
         val title = "Title"
         composeTestRule.setContent {
             TopBar(
                 title = title,
                 onBackIntent = { },
-                onInfoIntent = { }
+                onInfoIntent = { },
+                onConfigurationIntent = { }
             )
         }
 
         composeTestRule.onNodeWithTag(testTag = BACK_BUTTON_TAG).assertExists()
         composeTestRule.onNodeWithTag(testTag = INFO_BUTTON_TAG).assertExists()
+        composeTestRule.onNodeWithTag(testTag = CONFIG_BUTTON_TAG).assertExists()
         composeTestRule.onNodeWithTag(testTag = TITLE_TEXT_TAG).assertTextEquals(title)
     }
 
@@ -75,5 +92,17 @@ class TopBarTests {
         }
         composeTestRule.onNodeWithTag(testTag = INFO_BUTTON_TAG).performClick()
         assert(infoClicked)
+    }
+
+    @Test
+    fun clicking_ConfigButton_triggersConfigIntent() {
+        var configClicked = false
+        composeTestRule.setContent {
+            TopBar(
+                onConfigurationIntent = { configClicked = true }
+            )
+        }
+        composeTestRule.onNodeWithTag(testTag = CONFIG_BUTTON_TAG).performClick()
+        assert(configClicked)
     }
 }
