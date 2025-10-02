@@ -65,8 +65,8 @@
 
 #### Topic breakdown:
 * Architecting the UI: continuation
- * Immutability
- * View States
+  * Immutability
+  * View States
 * Automatic testing in Android
   * Unit tests with JUnit
   * Instrumented UI tests

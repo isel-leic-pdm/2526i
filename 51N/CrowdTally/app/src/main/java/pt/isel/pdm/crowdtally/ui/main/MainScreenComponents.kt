@@ -20,10 +20,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+const val CROWDTALLYCONTENT_INC_BUTTON = "CrowdTallyContent.incbutton"
+const val CROWDTALLYCONFIGURATORCONTENT_TEXTFIELD = "CrowdTallyConfiguratorContent.TextField"
 
 @Composable
 fun CrowdTallyConfiguratorContent(
@@ -43,6 +46,7 @@ fun CrowdTallyConfiguratorContent(
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier.testTag(CROWDTALLYCONFIGURATORCONTENT_TEXTFIELD)
         )
     }
 
@@ -53,7 +57,9 @@ fun CrowdTallyContent(
     currentCrowd: Int,
     maxCrowd: Int,
     onIncrement: () -> Unit,
-    onDecrement: () -> Unit
+    onDecrement: () -> Unit,
+    incEnabled : Boolean,
+    decEnabled : Boolean
 ) {
     Log.d("CrowdTallyContent", "recomposed")
 
@@ -65,9 +71,10 @@ fun CrowdTallyContent(
 
 
         ArrowButton(
-            enabled = currentCrowd < maxCrowd,
+            enabled = incEnabled,
             onClick = onIncrement,
             modifier = Modifier.rotate(-90f)
+                .testTag(CROWDTALLYCONTENT_INC_BUTTON)
         )
         Text(
             text = currentCrowd.toString(),
@@ -77,7 +84,7 @@ fun CrowdTallyContent(
 
 
         ArrowButton(
-            enabled = currentCrowd > 0,
+            enabled = decEnabled,
             onClick = onDecrement,
             modifier = Modifier.rotate(90f)
         )

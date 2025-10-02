@@ -19,16 +19,30 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import pt.isel.pdm.crowdtally.domain.CrowdTallyCounter
+import pt.isel.pdm.crowdtally.domain.changeMaxCrowd
+import pt.isel.pdm.crowdtally.domain.decrement
+import pt.isel.pdm.crowdtally.domain.increment
 import pt.isel.pdm.crowdtally.ui.theme.CrowdTallyTheme
 import kotlin.math.max
+
+sealed interface CrowdTallyScreenState {
+    data class Configurator(val maxCrowd: Int) : CrowdTallyScreenState
+    data class Counter(val counter: CrowdTallyCounter) : CrowdTallyScreenState
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CrowdTallyScreen(
 ) {
-    var maxCrowd by remember { mutableStateOf(5) }
-    var isMaxCrowdBeingEditted by remember { mutableStateOf(false) }
-    var currentCrowd by remember() { mutableStateOf(0) }
+
+    var screenState: CrowdTallyScreenState by remember {
+        mutableStateOf(
+            CrowdTallyScreenState.Counter(
+                CrowdTallyCounter.Default
+            )
+        )
+    }
 
     Log.d("CrowdTallyScreen", "recomposed")
     CrowdTallyTheme {
@@ -37,58 +51,71 @@ fun CrowdTallyScreen(
                 TopAppBar(
                     title = { Text("CrowdTally") },
                     actions = {
-                        if (isMaxCrowdBeingEditted == false) {
 
-                            Button(onClick = {
-                                isMaxCrowdBeingEditted = true
-                            }) {
-                                Icon(imageVector = Icons.Default.Edit, contentDescription = "")
+                        when (val state = screenState) {
+                            is CrowdTallyScreenState.Counter -> {
+                                Button(onClick = {
+                                    screenState =
+                                        CrowdTallyScreenState.Configurator(state.counter.maxCrowd)
+                                }) {
+                                    Icon(imageVector = Icons.Default.Edit, contentDescription = "")
+                                }
                             }
-                        } else {
-                            Button(onClick = {
-                                isMaxCrowdBeingEditted = false
-                            }) {
-                                Icon(imageVector = Icons.Default.Check, contentDescription = "")
+
+                            is CrowdTallyScreenState.Configurator -> {
+                                Button(onClick = {
+                                    screenState = CrowdTallyScreenState.Counter(
+                                        CrowdTallyCounter(
+                                            0,
+                                            state.maxCrowd
+                                        )
+                                    )
+                                }) {
+                                    Icon(imageVector = Icons.Default.Check, contentDescription = "")
+                                }
                             }
                         }
-                    }
-                )
-            }
-        ) {
+
+                    })
+            }) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
             ) {
 
-                if (isMaxCrowdBeingEditted) {
-                    CrowdTallyConfiguratorContent(
-                        maxCrowd = maxCrowd,
-                        onMaxCrowdChanged = {
-                            maxCrowd = it
-                        }
-                    )
 
-                } else {
-                    CrowdTallyContent(
-                        maxCrowd = maxCrowd,
-                        currentCrowd = currentCrowd,
-                        onIncrement = {
-                            currentCrowd++
-                        },
-                        onDecrement = {
-                            currentCrowd--
-                        }
-                    )
+                when (val currState = screenState) {
+                    is CrowdTallyScreenState.Configurator -> {
+                        CrowdTallyConfiguratorContent(
+                            maxCrowd = currState.maxCrowd,
+                            onMaxCrowdChanged = { maxCrowd ->
+                                screenState =
+                                    CrowdTallyScreenState.Configurator(maxCrowd)
+                            })
+                    }
+
+                    is CrowdTallyScreenState.Counter -> {
+                        CrowdTallyContent(
+                            maxCrowd = currState.counter.maxCrowd,
+                            currentCrowd = currState.counter.currentCrowd,
+                            onIncrement = {
+                                screenState =
+                                    CrowdTallyScreenState.Counter(currState.counter.increment())
+                            },
+                            onDecrement = {
+                                screenState =
+                                    CrowdTallyScreenState.Counter(currState.counter.decrement())
+
+                            },
+                            incEnabled = currState.counter.isFull == false,
+                            decEnabled = currState.counter.isEmpty == false
+                        )
+                    }
                 }
-                /*
-                 */
-                /*
-                CrowdTallyConfiguratorContent(
-                    maxCrowd = 5
-                )
-                 */
+
             }
         }
     }
 }
+
