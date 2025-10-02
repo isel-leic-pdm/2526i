@@ -8,13 +8,16 @@
       <SelectionState runConfigName="TopBarTests">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MainScreenTests">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="Tests in 'pdm.demos.demoshostapplication'">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="Tests in 'pdm.demos.demoshostapplication.ui'">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="ConfigurationViewTests">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="minus_button_is_disabled_when_at_minimum()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

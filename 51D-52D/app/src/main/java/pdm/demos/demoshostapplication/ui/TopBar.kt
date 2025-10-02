@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 
 const val BACK_BUTTON_TAG = "back_button"
 const val INFO_BUTTON_TAG = "info_button"
+const val CONFIG_BUTTON_TAG = "config_button"
 const val TITLE_TEXT_TAG = "title_text"
 
 /**
@@ -25,6 +27,9 @@ const val TITLE_TEXT_TAG = "title_text"
  * @param onBackIntent the handler function of the "back navigation" event. If null, the top bar
  * will not include a back button.
  * @param onInfoIntent the handler function of the "navigate to info" event. If null, the top bar
+ * will not include an info button.
+ * @param onConfigurationIntent the handler function of the "navigate to configuration" event.
+ * If null, the top bar will not include a configuration button.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,6 +37,7 @@ fun TopBar(
     title: String = "",
     onBackIntent: (() -> Unit)? = null,
     onInfoIntent: (() -> Unit)? = null,
+    onConfigurationIntent: (() -> Unit)? = null,
 ) {
     TopAppBar(
         title = { Text(text = title, modifier = Modifier.testTag(tag = TITLE_TEXT_TAG)) },
@@ -50,6 +56,13 @@ fun TopBar(
                     imageVector = Icons.Outlined.Info,
                     contentDescription = "About",
                     modifier = Modifier.clickable(onClick = it).testTag(tag = INFO_BUTTON_TAG)
+                )
+            }
+            onConfigurationIntent?.let {
+                Icon(
+                    imageVector = Icons.Outlined.Settings,
+                    contentDescription = "Configuration",
+                    modifier = Modifier.clickable(onClick = it).testTag(tag = CONFIG_BUTTON_TAG)
                 )
             }
         }
@@ -77,5 +90,13 @@ private fun TopBarWithoutBackNavigationPreview() {
 private fun TopBarWithoutInfoNavigationPreview() {
     DemosHostApplicationTheme {
         TopBar(title = "", onBackIntent = { })
+    }
+}
+
+@Preview
+@Composable
+private fun TopBarWithConfigurationPreview() {
+    DemosHostApplicationTheme {
+        TopBar(title = "Some App Title", onBackIntent = { }, onConfigurationIntent = { })
     }
 }

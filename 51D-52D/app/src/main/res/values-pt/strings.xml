@@ -2,5 +2,9 @@
 <resources>
     <string name="app_name">Demos Application</string>
     <string name="main_title">Demos de PDM</string>
-    <string name="main_navigate_crowd_tally">Demo Contador</string>
+    <string name="crowd_tally_settings_title">Configurações</string>
+    <string name="crowd_tally_save_button_text">Salvar</string>
+    <string name="crowd_tally_cancel_button_text">Cancelar</string>
+    <string name="crowd_tally_capacity_input_hint">Número máximo de pessoas</string>
+    <string name="crowd_tally_capacity_label">Capacidade:</string>
 </resources>

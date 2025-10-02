@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -56,7 +57,12 @@ private const val EMAIL_SUBJECT = "About the Dice Roller App"
 fun AboutScreen(onNavigate: (AboutScreenNavigationIntent) -> Unit) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { TopBar(onBackIntent = { onNavigate(Back) }) }
+        topBar = {
+            TopBar(
+                title = stringResource(id = R.string.main_title),
+                onBackIntent = { onNavigate(Back) }
+            )
+        }
     ) { innerPadding ->
         Column(
             verticalArrangement = Arrangement.SpaceEvenly,
@@ -103,7 +109,7 @@ private fun Author(onSendEmailRequested: () -> Unit = { }) {
  * @param link the link to the social network
  * @param imageId the id of the image to be displayed
  */
-private data class SocialInfo(val link: Uri, @DrawableRes val imageId: Int)
+private data class SocialInfo(val link: Uri, @param:DrawableRes val imageId: Int)
 
 private val socials = listOf(
     SocialInfo(
