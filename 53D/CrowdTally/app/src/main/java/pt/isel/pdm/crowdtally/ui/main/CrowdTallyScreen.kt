@@ -40,7 +40,7 @@ fun CrowdTallyScreen() {
     var crowdCounter = remember { mutableStateOf(0) }
     var isConfigurating by remember { mutableStateOf(false) }
 
-    
+
     CrowdTallyTheme {
         Scaffold(
             topBar = {

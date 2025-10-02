@@ -44,3 +44,37 @@
 * [Intents and intent filters | Android Developers](https://developer.android.com/guide/components/intents-filters)
   * [Sending the user to another app | Android Developers](https://developer.android.com/guide/components/intents-filters)
   * [Common intents | Android Developers](https://developer.android.com/guide/components/intents-common)
+  
+
+
+## Week 3 - 29/09/2025
+
+#### Topic breakdown:
+* Jetpack Compose
+  * Stateless vs. stateful @Composables, `remember` and `mutableStateOf` 
+  * State hoisting: lifting the state to the parent composable
+* Architecting the UI: introduction
+
+
+#### For reference:
+* [State and Jetpack Compose](https://developer.android.com/develop/ui/compose/state#state-and-composition)
+* [Architecting your Compose UI](https://developer.android.com/develop/ui/compose/architecture)
+* [Guide to app architecture](https://developer.android.com/topic/architecture)
+
+## Week 4 - 6/10/2025
+
+#### Topic breakdown:
+* Architecting the UI: continuation
+ * Immutability
+ * View States
+* Automatic testing in Android
+  * Unit tests with JUnit
+  * Instrumented UI tests
+  * Testing @Composable functions with Compose Testing
+
+#### For reference:
+* [State and Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/state#managing-state) 
+* [Architecting your Compose UI | Jetpack Compose | Android Developers](https://developer.android.com/jetpack/compose/architecture)
+* [Guide to application architecture](https://developer.android.com/jetpack/guide)
+* [Test your Compose layout](https://developer.android.com/develop/ui/compose/testing) 
+* [Test apps on Android](https://developer.android.com/training/testing)
