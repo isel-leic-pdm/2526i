@@ -76,3 +76,8 @@
 * [Guide to application architecture](https://developer.android.com/jetpack/guide)
 * [Test your Compose layout](https://developer.android.com/develop/ui/compose/testing) 
 * [Test apps on Android](https://developer.android.com/training/testing)
+
+## Week 4 - 29/09/2025
+### Subject: Building a UI with Jetpack Compose - State management (introduction to MVVM)
+* The Activity component: continued
+  * Lifecycle revisited: behavior on configuration changes (e.g. screen rotation)

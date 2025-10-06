@@ -29,10 +29,12 @@ import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
  */
 enum class TitleScreenNavigationIntent {
     NavigateToAbout,
-    NavigateToCrowdTally
+    NavigateToCrowdTally,
+    NavigateToUserTask
 }
 
 const val CROWD_TALLY_BUTTON_TAG = "crowd_tally_button"
+const val USER_TASK_BUTTON_TAG = "user_task_button"
 
 /**
  * The composable that corresponds to the main screen UX. Navigation to other screens is not
@@ -62,6 +64,12 @@ fun MainScreen(
                 modifier = Modifier.testTag(tag = CROWD_TALLY_BUTTON_TAG)
             ) {
                 Text(text = stringResource(id = R.string.main_navigate_crowd_tally) )
+            }
+            Button(
+                onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToUserTask) },
+                modifier = Modifier.testTag(tag = USER_TASK_BUTTON_TAG)
+            ) {
+                Text(text = stringResource(id = R.string.main_navigate_user_task) )
             }
         }
     }
