@@ -20,7 +20,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DemosHostApplication">
+        android:theme="@style/Theme.DemosHostApplication"
+        android:name=".DemosHostApplication">
         <activity
             android:name=".main.MainActivity"
             android:exported="true">
@@ -38,6 +39,8 @@
 
         <activity android:name=".usertask.UserTaskDemoActivity$A" />
         <activity android:name=".usertask.UserTaskDemoActivity$B" />
+
+        <activity android:name=".joke.JokeOfDayActivity" />
 
     </application>
 

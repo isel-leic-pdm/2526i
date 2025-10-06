@@ -81,3 +81,7 @@
 ### Subject: Building a UI with Jetpack Compose - State management (introduction to MVVM)
 * The Activity component: continued
   * Lifecycle revisited: behavior on configuration changes (e.g. screen rotation)
+  * Implications of configuration changes for state management
+* Jetpack Compose: continued
+  * Preservation of state across configuration changes
+  

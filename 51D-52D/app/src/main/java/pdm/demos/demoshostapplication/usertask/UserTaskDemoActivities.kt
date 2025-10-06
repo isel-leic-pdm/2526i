@@ -7,6 +7,7 @@ import android.os.Parcelable
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import kotlinx.parcelize.Parcelize
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 
@@ -15,6 +16,8 @@ import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
  * and display the trace of activity launches.
  */
 sealed class UserTaskDemoActivity : ComponentActivity() {
+
+    private val vm by viewModels<UserTaskDemoViewModel>()
 
     class A : UserTaskDemoActivity()
     class B : UserTaskDemoActivity()
@@ -34,6 +37,7 @@ sealed class UserTaskDemoActivity : ComponentActivity() {
             "UserTaskDemo",
             "${javaClass.simpleName}.onCreate() ; hashCode = ${hashCode()})"
         )
+        vm.doSomething()
         handleIncomingIntent(intent, reused = false)
     }
 

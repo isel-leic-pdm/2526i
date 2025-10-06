@@ -22,7 +22,7 @@ class CrowdTallyActivity : ComponentActivity() {
         }
     }
 
-    private val viewModel by viewModels<CrowdTallyViewModel>()
+    private val viewModel: CrowdTallyViewModel by viewModels<CrowdTallyViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
