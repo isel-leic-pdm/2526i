@@ -9,12 +9,20 @@ import androidx.core.net.toUri
 import pdm.demos.demoshostapplication.about.AboutScreenNavigationIntent.Back
 import pdm.demos.demoshostapplication.about.AboutScreenNavigationIntent.OpenUrl
 import pdm.demos.demoshostapplication.about.AboutScreenNavigationIntent.SendEmail
+import pdm.demos.demoshostapplication.crowdtally.CrowdTallyActivity
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 
 /**
  * The activity that hosts the about screen.
  */
 class AboutActivity : ComponentActivity() {
+
+    companion object {
+        fun navigate(ctx: ComponentActivity) {
+            val intent = Intent(ctx, AboutActivity::class.java)
+            ctx.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

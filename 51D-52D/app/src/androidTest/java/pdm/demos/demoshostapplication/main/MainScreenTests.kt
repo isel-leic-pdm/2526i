@@ -37,4 +37,17 @@ class MainScreenTests {
         composeTestRule.onNodeWithTag(testTag = CROWD_TALLY_BUTTON_TAG).performClick()
         assert(navigationIntent == TitleScreenNavigationIntent.NavigateToCrowdTally)
     }
+
+    @Test
+    fun clicking_UserTaskButton_triggersNavigateToUserTaskIntent() {
+        var navigationIntent: TitleScreenNavigationIntent? = null
+        composeTestRule.setContent {
+            MainScreen(
+                onNavigate = { navigationIntent = it }
+            )
+        }
+
+        composeTestRule.onNodeWithTag(testTag = USER_TASK_BUTTON_TAG).performClick()
+        assert(navigationIntent == TitleScreenNavigationIntent.NavigateToUserTask)
+    }
 }
