@@ -83,5 +83,41 @@
   * Lifecycle revisited: behavior on configuration changes (e.g. screen rotation)
   * Implications of configuration changes for state management
 * Jetpack Compose: continued
-  * Preservation of state across configuration changes
+  * Preservation of presentation state
+    * `rememberSaveable`
+    * `Parcelable` contract and `Parcelize` annotation
+* Architectural considerations
+  * Designing the UI as a state machine
+  * Introduction to MVVM (Model-View-ViewModel) in Android
+  * ViewModel component
+    * Lifecycle: behavior on configuration changes
+    * ViewModel and presentation state: host for the UI state machine
   
+  #### Lecture video:
+* [Lecture 04 - Building a Compose UI](https://www.youtube.com/watch?v=DxIqkU9JbbY&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=3)
+
+#### For reference:
+* [Save UI state in Compose | Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/state-saving)
+* [State and Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/state#restore-ui-state)
+* [Parcelable implementation generator | Kotlin | Android Developers](https://developer.android.com/kotlin/parcelize) 
+
+## Week 5 - 06/10/2025
+### Subject: Beyond the UI - ViewModel
+### Subject: Beyond the UI - Manual dependency injection
+* ViewModel
+  * Purpose and aplicability
+  * Lifecycle and relation with the Activity
+  * Instantiation and retrieval
+* Application class:
+  * Purpose and lifecycle
+  * Usage for dependency resolution (as a Service Locator)
+
+#### Lecture video:
+* [Lecture 05 - Beyond the UI - ViewModel](https://www.youtube.com/watch?v=hEupJHTXNZY&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=4)
+
+#### For reference:
+* [ViewModel overview | Android Developers](https://developer.android.com/topic/libraries/architecture)
+* [ViewModel lifecycle | Android Developers](https://developer.android.com/topic/libraries/architecture/viewmodel#lifecycle)
+* [Application class | Android Developers](https://developer.android.com/reference/android/app/Application)
+* [Manual dependency injection | Android Developers](https://developer.android.com/training/dependency-injection/manual)
+
