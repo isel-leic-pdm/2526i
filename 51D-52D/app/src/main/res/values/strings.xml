@@ -3,6 +3,7 @@
     <string name="main_title">PDM Course Demos</string>
     <string name="main_navigate_crowd_tally" translatable="false">Crowd Tally Demo</string>
     <string name="main_navigate_user_task" translatable="false">User Task Demo</string>
+    <string name="main_navigate_joke" translatable="false">Joke Demo</string>
 
     <string name="crowd_tally_title" translatable="false">Crowd Tally</string>
     <string name="crowd_tally_settings_title">Settings</string>
