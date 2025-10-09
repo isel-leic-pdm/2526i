@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -14,35 +13,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import pt.isel.pdm.crowdtally.domain.CrowdTallyCounter
-import pt.isel.pdm.crowdtally.domain.changeMaxCrowd
-import pt.isel.pdm.crowdtally.domain.decrement
-import pt.isel.pdm.crowdtally.domain.increment
 import pt.isel.pdm.crowdtally.ui.theme.CrowdTallyTheme
-import kotlin.math.max
 
-sealed interface CrowdTallyScreenState {
-    data class Configurator(val maxCrowd: Int) : CrowdTallyScreenState
-    data class Counter(val counter: CrowdTallyCounter) : CrowdTallyScreenState
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CrowdTallyScreen(
+    viewModel: MainViewModel
 ) {
 
-    var screenState: CrowdTallyScreenState by remember {
-        mutableStateOf(
-            CrowdTallyScreenState.Counter(
-                CrowdTallyCounter.Default
-            )
-        )
-    }
 
     Log.d("CrowdTallyScreen", "recomposed")
     CrowdTallyTheme {
@@ -52,27 +32,17 @@ fun CrowdTallyScreen(
                     title = { Text("CrowdTally") },
                     actions = {
 
-                        when (val state = screenState) {
+                        when (val state = viewModel.screenState) {
                             is CrowdTallyScreenState.Counter -> {
                                 Button(onClick = {
-                                    screenState =
-                                        CrowdTallyScreenState.Configurator(state.counter.maxCrowd)
+                                    viewModel.startConfiguration()
                                 }) {
                                     Icon(imageVector = Icons.Default.Edit, contentDescription = "")
                                 }
                             }
 
                             is CrowdTallyScreenState.Configurator -> {
-                                Button(onClick = {
-                                    screenState = CrowdTallyScreenState.Counter(
-                                        CrowdTallyCounter(
-                                            0,
-                                            state.maxCrowd
-                                        )
-                                    )
-                                }) {
-                                    Icon(imageVector = Icons.Default.Check, contentDescription = "")
-                                }
+
                             }
                         }
 
@@ -85,14 +55,13 @@ fun CrowdTallyScreen(
             ) {
 
 
-                when (val currState = screenState) {
+                when (val currState = viewModel.screenState) {
                     is CrowdTallyScreenState.Configurator -> {
                         CrowdTallyConfiguratorContent(
                             maxCrowd = currState.maxCrowd,
                             onMaxCrowdChanged = { maxCrowd ->
-                                screenState =
-                                    CrowdTallyScreenState.Configurator(maxCrowd)
-                            })
+                                viewModel.stopConfiguration(maxCrowd)
+                                })
                     }
 
                     is CrowdTallyScreenState.Counter -> {
@@ -100,13 +69,10 @@ fun CrowdTallyScreen(
                             maxCrowd = currState.counter.maxCrowd,
                             currentCrowd = currState.counter.currentCrowd,
                             onIncrement = {
-                                screenState =
-                                    CrowdTallyScreenState.Counter(currState.counter.increment())
+                               viewModel.incrementPeople()
                             },
                             onDecrement = {
-                                screenState =
-                                    CrowdTallyScreenState.Counter(currState.counter.decrement())
-
+                                viewModel.decrementPeople()
                             },
                             incEnabled = currState.counter.isFull == false,
                             decEnabled = currState.counter.isEmpty == false
@@ -117,5 +83,10 @@ fun CrowdTallyScreen(
             }
         }
     }
+}
+
+@Composable
+fun stopConfiguration(x0: Int) {
+    TODO("Not yet implemented")
 }
 
