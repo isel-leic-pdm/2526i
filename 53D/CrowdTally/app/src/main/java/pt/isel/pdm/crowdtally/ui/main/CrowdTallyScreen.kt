@@ -1,5 +1,6 @@
 package pt.isel.pdm.crowdtally.ui.main
 
+import android.os.Parcelable
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,6 +29,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import kotlinx.parcelize.Parcelize
 import pt.isel.pdm.crowdtally.domain.CrowdTallyCounter
 import pt.isel.pdm.crowdtally.domain.decrement
 import pt.isel.pdm.crowdtally.domain.increment
@@ -38,18 +42,13 @@ const val TestTagIncrementButton = "CrowdTallyScreen_IncrementButton"
 const val TestTagMaxCrowdInput = "CrowdTallyScreen_MaxCrowdInput"
 const val TestTagConfigurationButton = "CrowdTallyScreen_ConfigurationButton"
 
-sealed interface CrowdTallyScreenState {
-    data class Counter(val counter: CrowdTallyCounter) : CrowdTallyScreenState
-    data class Configuration(val maxCrowd: Int) : CrowdTallyScreenState
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CrowdTallyScreen() {
+fun CrowdTallyScreen(
+    viewModel: CrowdTallyViewModel,
+) {
 
-    var state: CrowdTallyScreenState by remember {
-        mutableStateOf(CrowdTallyScreenState.Counter(CrowdTallyCounter.Default))
-    }
 
     CrowdTallyTheme {
         Scaffold(
@@ -58,11 +57,10 @@ fun CrowdTallyScreen() {
                     title = { Text("CrowdTally") },
                     actions = {
 
-                        when (val currState = state) {
+                        when (viewModel.state) {
                             is CrowdTallyScreenState.Counter -> {
                                 Button(onClick = {
-                                    state =
-                                        CrowdTallyScreenState.Configuration(currState.counter.max)
+                                    viewModel.startConfiguration()
                                 }) {
                                     Icon(
                                         imageVector = Icons.Default.Edit,
@@ -81,20 +79,16 @@ fun CrowdTallyScreen() {
             modifier = Modifier.fillMaxSize()
         ) { innerPadding ->
 
-            when (val viewState = state) {
+            when (val viewState = viewModel.state) {
                 is CrowdTallyScreenState.Counter -> {
                     CrowdTallyContent(
                         crowdCounter = viewState.counter.current,
                         onIncrement = {
-                            state = CrowdTallyScreenState.Counter(
-                                viewState.counter.increment()
-                            )
+                            viewModel.incrementPeople()
                             Log.d("Button", "CrowCounter value is ${viewState.counter.current}")
                         },
                         onDecrement = {
-                            state = CrowdTallyScreenState.Counter(
-                                viewState.counter.decrement()
-                            )
+                            viewModel.decrementPeople()
                             Log.d("Button", "CrowCounter value is ${viewState.counter.current}")
                         },
                         incrementEnabled = viewState.counter.isFull == false,
@@ -107,10 +101,7 @@ fun CrowdTallyScreen() {
                     CrowCounterConfigurator(
                         maxCounterDefault = viewState.maxCrowd,
                         onCommit = { newMaxCounter ->
-                            state = CrowdTallyScreenState.Counter(
-                                //CrowdTallyCounter.Default.withNewMax(newMaxCounter)
-                                CrowdTallyCounter(0, newMaxCounter)
-                            )
+                            viewModel.stopConfiguration(newMaxCounter)
                         },
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -121,6 +112,23 @@ fun CrowdTallyScreen() {
     }
 }
 
+val ConfigurationCountSaver = Saver<ConfigurationCount, List<Any>>(
+    save = {
+        listOf(it.currCount)
+    },
+    restore = {
+        ConfigurationCount(it[0] as Int)
+    }
+)
+
+@Parcelize
+data class ConfigurationCount(
+    val currCount: Int
+) : Parcelable {
+
+}
+
+
 @Composable
 fun CrowCounterConfigurator(
     maxCounterDefault: Int,
@@ -129,17 +137,24 @@ fun CrowCounterConfigurator(
 ) {
 
     Log.d("CrowCounterConfigurator", "Recomposed")
-    var maxCounter = remember { mutableStateOf(maxCounterDefault) }
+    /*
+    var maxCounter by rememberSaveable(stateSaver = ConfigurationCountSaver) {
+        mutableStateOf(ConfigurationCount(maxCounterDefault))
+    }*/
+
+    var maxCounter by rememberSaveable() {
+        mutableStateOf(ConfigurationCount(maxCounterDefault))
+    }
     Column(
         modifier = modifier.fillMaxSize()
     ) {
         TextField(
-            value = maxCounter.value.toString(),
+            value = maxCounter.currCount.toString(),
             label = { Text("New Max Crowd") },
             onValueChange = { newValue ->
                 //value changed
-                maxCounter.value = newValue.toInt()
-                Log.d("TextField", "Changing ${maxCounter.value}")
+                maxCounter = ConfigurationCount(newValue.toInt())
+                Log.d("TextField", "Changing ${maxCounter.currCount}")
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.testTag(TestTagMaxCrowdInput)
@@ -148,7 +163,7 @@ fun CrowCounterConfigurator(
         Button(
             modifier = Modifier.testTag(TestTagConfigurationButton),
             onClick = {
-                onCommit(maxCounter.value)
+                onCommit(maxCounter.currCount)
             },
         ) {
             Text("Commit")
@@ -175,13 +190,17 @@ fun CrowdTallyContent(
 
         ArrowButton(
             onClick = onIncrement,
-            modifier = Modifier.rotate(-90f).testTag(TestTagIncrementButton),
+            modifier = Modifier
+                .rotate(-90f)
+                .testTag(TestTagIncrementButton),
             enabled = incrementEnabled
         )
 
 
         Text(
-            modifier = Modifier.padding(12.dp).testTag(TestTagCounterText),
+            modifier = Modifier
+                .padding(12.dp)
+                .testTag(TestTagCounterText),
             text = crowdCounter.toString()
         )
 
