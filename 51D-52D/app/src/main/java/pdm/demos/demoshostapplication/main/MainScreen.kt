@@ -77,7 +77,7 @@ fun MainScreen(
                 onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToJokeOfTheDay) },
                 modifier = Modifier.testTag(tag = JOKE_OF_DAY_BUTTON_TAG)
             ) {
-                Text(text = stringResource(id = R.string.main_navigate_joke) )
+                Text(text = stringResource(id = R.string.main_navigate_jokes) )
             }
         }
     }

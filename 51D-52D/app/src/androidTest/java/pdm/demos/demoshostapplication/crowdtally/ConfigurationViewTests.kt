@@ -11,7 +11,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyScreenState.Configuration
+import pdm.demos.demoshostapplication.crowdtally.CrowdTallyScreenState.Configuration
 
 class ConfigurationViewTests {
 

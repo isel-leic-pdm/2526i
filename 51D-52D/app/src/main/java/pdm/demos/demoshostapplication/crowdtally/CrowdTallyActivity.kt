@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyViewModel
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 
 /**

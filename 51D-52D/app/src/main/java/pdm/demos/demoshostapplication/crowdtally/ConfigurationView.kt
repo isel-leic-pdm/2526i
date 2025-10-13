@@ -24,7 +24,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pdm.demos.demoshostapplication.R
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyScreenState
 import pdm.demos.demoshostapplication.crowdtally.domain.isValidCapacity
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 

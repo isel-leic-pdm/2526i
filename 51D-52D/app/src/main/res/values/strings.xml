@@ -3,7 +3,7 @@
     <string name="main_title">PDM Course Demos</string>
     <string name="main_navigate_crowd_tally" translatable="false">Crowd Tally Demo</string>
     <string name="main_navigate_user_task" translatable="false">User Task Demo</string>
-    <string name="main_navigate_joke" translatable="false">Joke Demo</string>
+    <string name="main_navigate_jokes" translatable="false">Jokes Demo</string>
 
     <string name="crowd_tally_title" translatable="false">Crowd Tally</string>
     <string name="crowd_tally_settings_title">Settings</string>
@@ -13,4 +13,10 @@
     <string name="crowd_tally_capacity_label">Capacity:</string>
 
     <string name="user_task_title" translatable="false">User Task (top first)</string>
+
+    <string name="jokes_title" translatable="false">Joke of the Day</string>
+    <string name="jokes_error_api_title">Error accessing the server</string>
+    <string name="jokes_error_retry_button_text">Retry</string>
+    <string name="jokes_error_could_not_reach_api">Please check if the device is connected to the internet</string>
+
 </resources>

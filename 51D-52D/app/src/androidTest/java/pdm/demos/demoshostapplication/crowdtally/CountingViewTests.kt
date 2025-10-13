@@ -9,7 +9,7 @@ import androidx.compose.ui.test.performClick
 import org.junit.Rule
 import org.junit.Test
 import pdm.demos.demoshostapplication.crowdtally.domain.CrowdCounter
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyScreenState.Counting
+import pdm.demos.demoshostapplication.crowdtally.CrowdTallyScreenState.Counting
 
 class CountingViewTests {
 

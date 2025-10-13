@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import pdm.demos.demoshostapplication.DemosHostApplication
-import kotlin.getValue
 
 
 class JokeOfDayActivity : ComponentActivity() {
@@ -29,8 +28,8 @@ class JokeOfDayActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
             JokeOfDayScreen(
+                viewModel = viewModel,
                 onBackIntent = { finish() }
             )
         }

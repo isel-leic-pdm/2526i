@@ -6,7 +6,6 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextReplacement
 import org.junit.Rule
 import org.junit.Test
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyViewModel
 import pdm.demos.demoshostapplication.ui.CONFIG_BUTTON_TAG
 
 /**
