@@ -8,9 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import pdm.demos.demoshostapplication.R
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdCounter
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyScreenState
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyViewModel
 import pdm.demos.demoshostapplication.ui.TopBar
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 

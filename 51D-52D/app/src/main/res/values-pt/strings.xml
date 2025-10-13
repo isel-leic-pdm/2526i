@@ -7,4 +7,7 @@
     <string name="crowd_tally_cancel_button_text">Cancelar</string>
     <string name="crowd_tally_capacity_input_hint">Número máximo de pessoas</string>
     <string name="crowd_tally_capacity_label">Capacidade:</string>
+    <string name="jokes_error_api_title">Erro ao contactar com o servidor</string>
+    <string name="jokes_error_retry_button_text">Retentar</string>
+    <string name="jokes_error_could_not_reach_api">Verifique se o dispositivo tem acesso à internet</string>
 </resources>

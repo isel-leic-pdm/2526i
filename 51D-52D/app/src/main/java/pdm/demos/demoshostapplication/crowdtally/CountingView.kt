@@ -20,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pdm.demos.demoshostapplication.crowdtally.domain.CrowdCounter
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdTallyScreenState
 import pdm.demos.demoshostapplication.ui.RoundButton
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 

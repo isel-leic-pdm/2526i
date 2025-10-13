@@ -121,3 +121,19 @@
 * [Application class | Android Developers](https://developer.android.com/reference/android/app/Application)
 * [Manual dependency injection | Android Developers](https://developer.android.com/training/dependency-injection/manual)
 
+## Week 6 - 13/10/2025
+### Subject: Beyond the UI - ViewModel (continued)
+### Subject: Android concurrency model
+* Overview of concurrency in Android
+  * Main thread vs background threads
+  * Constraints on the work performed on the main thread
+  * ANR (Application Not Responding) errors
+* Kotlin's concurrency model (revision from Concurrent Programming course)
+  * Thread vs coroutine
+  * Suspending functions, coroutines, scopes e dispatchers
+* ViewModel (continued)
+  * ViewModelScope
+  * Launching coroutines from the ViewModel
+
+#### Lecture video:
+* Lecture 06 - Beyond the UI - ViewModel (continued) and Android concurrency model (coming soon)

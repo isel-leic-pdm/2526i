@@ -1,9 +1,10 @@
-package pdm.demos.demoshostapplication.crowdtally.domain
+package pdm.demos.demoshostapplication.crowdtally
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import pdm.demos.demoshostapplication.crowdtally.domain.CrowdCounter
 
 /**
  * Represents the different states of the crowd tally screen.
