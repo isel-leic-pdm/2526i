@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PokemonPDM</string>
+    <string name="title_activity_about">About</string>
+    <string name="about_text">Made with love for PDM classes</string>
+    <string name="height_format">Height:%.2f m</string>
+    <string name="weight_format">Weight:%.2f kg</string>
+</resources>
