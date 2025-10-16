@@ -5,8 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import pdm.demos.demoshostapplication.crowdtally.CrowdTallyScreenState
-import pdm.demos.demoshostapplication.crowdtally.domain.CrowdCounter
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import pdm.demos.demoshostapplication.joke.domain.Joke
 import pdm.demos.demoshostapplication.joke.domain.JokesService
 
@@ -43,19 +44,46 @@ class JokeOfDayScreenViewModel(val jokeService: JokesService) : ViewModel() {
 
     var currentState: JokeOfDayScreenState by mutableStateOf(value = JokeOfDayScreenState.Idle)
 
+    init {
+        viewModelScope.launch {
+            while (true) {
+                if (currentState !is JokeOfDayScreenState.Loading) {
+                    internalFetchJoke()
+                }
+                delay(10000)
+            }
+        }
+    }
+
+    private suspend fun internalFetchJoke(): Unit {
+        currentState = try {
+            currentState = JokeOfDayScreenState.Loading
+            jokeService.getJoke().let {
+                JokeOfDayScreenState.Success(it)
+            }
+        } catch (e: Exception) {
+            JokeOfDayScreenState.Error(e)
+        }
+    }
+
     /**
      * Fetches a new joke from the service and updates the screen state accordingly.
      */
     fun fetchJoke() {
-        TODO("Not yet implemented")
+        if (currentState !is JokeOfDayScreenState.Loading) {
+            viewModelScope.launch {
+                internalFetchJoke()
+            }
+        }
     }
 
     /**
      * Resets the screen state to idle.
      */
     fun resetToIdle() {
-        TODO("Not yet implemented")
+        if (currentState !is JokeOfDayScreenState.Loading) {
+            currentState = JokeOfDayScreenState.Idle
+        }
     }
-
 }
 
