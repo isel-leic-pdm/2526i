@@ -16,7 +16,7 @@
 
     <string name="jokes_title" translatable="false">Joke of the Day</string>
     <string name="jokes_error_api_title">Error accessing the server</string>
-    <string name="jokes_error_retry_button_text">Retry</string>
+    <string name="jokes_error_retry_button_text">OK</string>
     <string name="jokes_error_could_not_reach_api">Please check if the device is connected to the internet</string>
 
 </resources>

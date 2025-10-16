@@ -1,6 +1,7 @@
 package pdm.demos.demoshostapplication.joke.domain
 
 import android.util.Log
+import kotlinx.coroutines.delay
 import pdm.demos.demoshostapplication.JOKE_APP_TAG
 import java.net.URL
 import kotlin.random.Random
@@ -15,7 +16,7 @@ interface JokesService {
     /**
      * Returns a random joke.
      */
-    fun getJoke(): Joke
+    suspend fun getJoke(): Joke
 }
 
 /**
@@ -34,9 +35,10 @@ data class Joke(val text: String, val source: URL) {
 class FakeJokesService : JokesService {
 
 
-    override fun getJoke(): Joke {
+    override suspend fun getJoke(): Joke {
         Log.v(JOKE_APP_TAG, "FakeJokesService.getJoke() started")
         val index = Random.nextInt(from = 0, until = jokes.size)
+        delay(3000) // Simulate network delay
         val theJoke = jokes[index]
         Log.v(JOKE_APP_TAG, "FakeJokesService.getJoke() finishing")
         return theJoke
