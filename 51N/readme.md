@@ -130,4 +130,24 @@
   * [View Model lifecycle](https://developer.android.com/topic/libraries/architecture/viewmodel#lifecycle)
   * [Use Kotlin Coroutines with lifecycle-aware components](https://developer.android.com/topic/libraries/architecture/coroutines#viewmodelscope)
 * [ViewModelStore](https://developer.android.com/reference/androidx/lifecycle/ViewModelStore)
-* [ViewModelStoreOwner](https://developer.android.com/reference/androidx/lifecycle/ViewModelStoreOwner)
+* [ViewModelStoreOwner](https://developer.android.com/reference/androidx/lifecycle/ViewModelStoreOwner
+
+## Week 5 - 13/10/2025
+
+### Subject: Beyond the UI - Manual Dependency Injection
+
+* Application resources: internationalization and localization
+* ViewModel, revisited
+  * Instantiating using a custom factory, to enable parametric construction
+  * Automated testing of the ViewModel
+* Application
+  * Motivation and lifecycle
+  * Usage for dependency resolution (as a Service Locator)
+  
+### For reference:
+* [Resources in Compose](https://developer.android.com/jetpack/compose/resources)
+* [Application resources](https://developer.android.com/guide/topics/resources/providing-resources)
+* [Application](https://developer.android.com/reference/android/app/Application)
+* [Manual dependency injection](https://developer.android.com/training/dependency-injection/manual)
+* [Testing Coroutines on Android](https://developer.android.com/kotlin/coroutines/test)
+* [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate)
