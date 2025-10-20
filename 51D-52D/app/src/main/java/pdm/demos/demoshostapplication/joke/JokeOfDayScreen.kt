@@ -1,8 +1,11 @@
 package pdm.demos.demoshostapplication.joke
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import pdm.demos.demoshostapplication.R
+import pdm.demos.demoshostapplication.joke.domain.FakeJokesService
 import pdm.demos.demoshostapplication.ui.ErrorAlert
+import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 
 @Composable
 fun JokeOfDayScreen(viewModel: JokeOfDayScreenViewModel, onBackIntent: () -> Unit) {
@@ -30,5 +33,15 @@ fun JokeOfDayScreen(viewModel: JokeOfDayScreenViewModel, onBackIntent: () -> Uni
             onDismiss = { viewModel.resetToIdle() }
         )
     }
+}
 
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun JokeOfDayScreenPreview() {
+    DemosHostApplicationTheme {
+        JokeOfDayScreen(
+            viewModel = JokeOfDayScreenViewModel(jokeService = FakeJokesService()),
+            onBackIntent = { }
+        )
+    }
 }

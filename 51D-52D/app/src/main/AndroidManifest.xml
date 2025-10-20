@@ -42,6 +42,9 @@
 
         <activity android:name=".joke.JokeOfDayActivity" />
 
+        <activity
+            android:name=".login.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
