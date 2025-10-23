@@ -50,4 +50,28 @@ class MainScreenTests {
         composeTestRule.onNodeWithTag(testTag = USER_TASK_BUTTON_TAG).performClick()
         assert(navigationIntent == TitleScreenNavigationIntent.NavigateToUserTask)
     }
+
+    @Test
+    fun clicking_JokeOfDayButton_triggersNavigateToJokeOfTheDayIntent() {
+        var navigationIntent: TitleScreenNavigationIntent? = null
+        composeTestRule.setContent {
+            MainScreen(
+                onNavigate = { navigationIntent = it }
+            )
+        }
+        composeTestRule.onNodeWithTag(testTag = JOKE_OF_DAY_BUTTON_TAG).performClick()
+        assert(navigationIntent == TitleScreenNavigationIntent.NavigateToJokeOfTheDay)
+    }
+
+    @Test
+    fun clicking_LoginButton_triggersNavigateToLoginIntent() {
+        var navigationIntent: TitleScreenNavigationIntent? = null
+        composeTestRule.setContent {
+            MainScreen(
+                onNavigate = { navigationIntent = it }
+            )
+        }
+        composeTestRule.onNodeWithTag(testTag = LOGIN_BUTTON_TAG).performClick()
+        assert(navigationIntent == TitleScreenNavigationIntent.NavigateToLogin)
+    }
 }

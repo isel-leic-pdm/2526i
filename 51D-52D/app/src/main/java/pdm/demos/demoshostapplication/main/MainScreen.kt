@@ -31,12 +31,14 @@ enum class TitleScreenNavigationIntent {
     NavigateToAbout,
     NavigateToCrowdTally,
     NavigateToUserTask,
-    NavigateToJokeOfTheDay
+    NavigateToJokeOfTheDay,
+    NavigateToLogin,
 }
 
 const val CROWD_TALLY_BUTTON_TAG = "crowd_tally_button"
 const val USER_TASK_BUTTON_TAG = "user_task_button"
 const val JOKE_OF_DAY_BUTTON_TAG = "joke_button"
+const val LOGIN_BUTTON_TAG = "login_button"
 
 /**
  * The composable that corresponds to the main screen UX. Navigation to other screens is not
@@ -63,21 +65,27 @@ fun MainScreen(
         ) {
             Button(
                 onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToCrowdTally) },
-                modifier = Modifier.testTag(tag = CROWD_TALLY_BUTTON_TAG)
+                modifier = Modifier.testTag(tag = CROWD_TALLY_BUTTON_TAG).padding(vertical = 8.dp)
             ) {
                 Text(text = stringResource(id = R.string.main_navigate_crowd_tally) )
             }
             Button(
                 onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToUserTask) },
-                modifier = Modifier.testTag(tag = USER_TASK_BUTTON_TAG)
+                modifier = Modifier.testTag(tag = USER_TASK_BUTTON_TAG).padding(vertical = 8.dp)
             ) {
                 Text(text = stringResource(id = R.string.main_navigate_user_task) )
             }
             Button(
                 onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToJokeOfTheDay) },
-                modifier = Modifier.testTag(tag = JOKE_OF_DAY_BUTTON_TAG)
+                modifier = Modifier.testTag(tag = JOKE_OF_DAY_BUTTON_TAG).padding(vertical = 8.dp)
             ) {
                 Text(text = stringResource(id = R.string.main_navigate_jokes) )
+            }
+            Button(
+                onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToLogin) },
+                modifier = Modifier.testTag(tag = LOGIN_BUTTON_TAG).padding(vertical = 8.dp)
+            ) {
+                Text(text = stringResource(id = R.string.main_navigate_login) )
             }
         }
     }
