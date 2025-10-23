@@ -4,4 +4,6 @@
     <string name="about_text">Made with love for PDM classes</string>
     <string name="height_format">Height:%.2f m</string>
     <string name="weight_format">Weight:%.2f kg</string>
+    <string name="loading">Loading...</string>
+    <string name="retry">retry</string>
 </resources>

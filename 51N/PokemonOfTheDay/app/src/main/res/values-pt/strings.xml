@@ -4,4 +4,6 @@
     <string name="about_text">Feito com carinho para as aulas de PDM</string>
     <string name="height_format">Altura:%.2f m</string>
     <string name="weight_format">Peso:%.2f kg</string>
+    <string name="loading">A carregar...</string>
+    <string name="retry">retry</string>
 </resources>

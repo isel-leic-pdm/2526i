@@ -5,9 +5,15 @@ import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 
 
 class FakePokedexService : PokedexService {
+
+    var currIdx = 0
     override suspend fun getPokemonOfTheDay(): PokemonData {
         delay(1000)
-        return Pokemons.List.random()
+
+        if (currIdx > Pokemons.List.size)
+            currIdx = 0
+
+        return Pokemons.List[++currIdx]
     }
 
 

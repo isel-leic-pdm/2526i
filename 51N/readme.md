@@ -151,3 +151,20 @@
 * [Manual dependency injection](https://developer.android.com/training/dependency-injection/manual)
 * [Testing Coroutines on Android](https://developer.android.com/kotlin/coroutines/test)
 * [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate)
+
+
+## Week 6 - 20/10/2025
+
+### Subject: Beyond the UI - ViewModel (continued)
+
+### Subject: Android concurrency model
+* Overview of concurrency in Android
+  * Main thread vs background threads
+  * Constraints on the work performed on the main thread
+  * ANR (Application Not Responding) errors
+* Kotlin's concurrency model (revision from Concurrent Programming course)
+  * Thread vs coroutine
+  * Suspending functions, coroutines, scopes e dispatchers
+* ViewModel (continued)
+  * ViewModelScope
+  * Launching coroutines from the ViewModel

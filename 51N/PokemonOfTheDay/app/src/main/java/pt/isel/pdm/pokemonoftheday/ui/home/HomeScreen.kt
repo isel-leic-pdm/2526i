@@ -12,8 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import pt.isel.pdm.pokemonoftheday.R
 import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 import pt.isel.pdm.pokemonoftheday.domain.heightInMeter
 import pt.isel.pdm.pokemonoftheday.domain.weightInKilogram
@@ -40,8 +42,70 @@ fun HomeScreen(
             }
         ) {
             Box(modifier = Modifier.padding(it)) {
-                FullScreenPokemonDataView(viewModel.pokemonOfTheDay)
-                Button(onClick = { viewModel.refreshPokemonOfTheDay() }) { }
+                when (val state = viewModel.screenState) {
+                    is HomeViewState.ValidPokemon -> {
+                        FullScreenPokemonDataView(state.pokemon)
+                        Button(onClick = { viewModel.refreshPokemonOfTheDay() }) { }
+                    }
+
+                    is HomeViewState.Loading -> {
+                        Text(stringResource(R.string.loading))
+                    }
+
+                    is HomeViewState.Error -> {
+                        Column {
+
+                            Button(onClick = {
+                                viewModel.refreshPokemonOfTheDay()
+                            }) {
+                                Text(stringResource(R.string.retry))
+                            }
+                            Text(state.error.toString())
+                        }
+                    }
+
+                    is HomeViewState.Empty -> {}
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun HomeScreenOnlyMutableState(
+    navToAbout: () -> Unit,
+    viewModel: HomeViewModelOnlyMutableState
+) {
+    PokemonOfTheDayTheme {
+        Scaffold(
+            topBar = {
+                CustomAppTopBar(
+                    navActions = NavigationActions(
+                        onAboutAction = navToAbout
+                    )
+                )
+            }
+        ) {
+            Box(modifier = Modifier.padding(it)) {
+                if (viewModel.lastError != null) {
+                    Column {
+                        Button(onClick = {
+                            viewModel.refreshPokemonOfTheDay()
+                        }) {
+                            Text(stringResource(R.string.retry))
+                        }
+                        Text(viewModel.lastError.toString())
+                    }
+                } else {
+
+                    if (viewModel.isLoading)
+                        Text(stringResource(R.string.loading))
+                    else {
+                        FullScreenPokemonDataView(viewModel.pokemonOfTheDay)
+                        Button(onClick = { viewModel.refreshPokemonOfTheDay() }) { }
+                    }
+                }
             }
         }
     }
