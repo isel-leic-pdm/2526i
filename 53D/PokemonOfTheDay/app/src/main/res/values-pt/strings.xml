@@ -3,4 +3,6 @@
     <string name="title_activity_about">Acerca</string>
     <string name="about_text">Feito com carinho para as aulas de PDM</string>
     <string name="title_activity_main">Actividade Principal</string>
+    <string name="Loading">Loading</string>
+    <string name="retry">retry</string>
 </resources>
