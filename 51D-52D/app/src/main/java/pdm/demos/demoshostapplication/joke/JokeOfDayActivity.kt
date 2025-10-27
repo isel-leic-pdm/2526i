@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import pdm.demos.demoshostapplication.DemosHostApplication
+import pdm.demos.demoshostapplication.DependenciesContainer
 
 
 class JokeOfDayActivity : ComponentActivity() {
@@ -21,7 +21,7 @@ class JokeOfDayActivity : ComponentActivity() {
 
     private val viewModel: JokeOfDayScreenViewModel by viewModels {
         JokeOfDayScreenViewModel.getFactory(
-            service = (application as DemosHostApplication).jokeService
+            service = (application as DependenciesContainer).jokeService
         )
     }
 

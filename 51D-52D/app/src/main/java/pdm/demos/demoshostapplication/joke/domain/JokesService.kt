@@ -3,6 +3,7 @@ package pdm.demos.demoshostapplication.joke.domain
 import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import pdm.demos.demoshostapplication.JOKE_APP_TAG
 import java.net.URL
 import kotlin.random.Random
@@ -20,9 +21,9 @@ interface JokesService {
     fun getJokes(): Flow<Joke>
 
     /**
-     * Returns a random joke.
+     * Fetches a random joke and returns it.
      */
-    suspend fun getJoke(): Joke
+    suspend fun fetchJoke(): Joke
 }
 
 /**
@@ -41,13 +42,19 @@ data class Joke(val text: String, val source: URL) {
 class FakeJokesService : JokesService {
     
     override val joke: Flow<Joke>
-        get() = TODO("Not yet implemented")
+        get() = flow {
+            while (true) {
+                val index = Random.nextInt(from = 0, until = jokes.size)
+                delay(5000) // Emit a new joke every 5 seconds
+                emit(jokes[index])
+            }
+        }
 
     override fun getJokes(): Flow<Joke> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getJoke(): Joke {
+    override suspend fun fetchJoke(): Joke {
         Log.v(JOKE_APP_TAG, "FakeJokesService.getJoke() started")
         val index = Random.nextInt(from = 0, until = jokes.size)
         delay(3000) // Simulate network delay
