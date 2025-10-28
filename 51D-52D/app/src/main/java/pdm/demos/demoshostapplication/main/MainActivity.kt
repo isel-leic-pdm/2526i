@@ -6,7 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import pdm.demos.demoshostapplication.about.AboutActivity
 import pdm.demos.demoshostapplication.crowdtally.CrowdTallyActivity
-import pdm.demos.demoshostapplication.joke.JokeOfDayActivity
+import pdm.demos.demoshostapplication.joke.pull.JokeOfDayActivity
+import pdm.demos.demoshostapplication.joke.reactive.JokeOfDayActivityReactive
 import pdm.demos.demoshostapplication.login.LoginActivity
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 import pdm.demos.demoshostapplication.usertask.UserTaskDemoActivity
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
             TitleScreenNavigationIntent.NavigateToCrowdTally -> CrowdTallyActivity.navigate(ctx = this)
             TitleScreenNavigationIntent.NavigateToUserTask -> UserTaskDemoActivity.navigate(ctx = this)
             TitleScreenNavigationIntent.NavigateToJokeOfTheDay -> JokeOfDayActivity.navigate(ctx = this)
+            TitleScreenNavigationIntent.NavigateToJokeOfTheDayReactive -> JokeOfDayActivityReactive.navigate(ctx = this)
             TitleScreenNavigationIntent.NavigateToLogin -> LoginActivity.navigate(ctx = this)
         }
     }

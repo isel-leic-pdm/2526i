@@ -43,7 +43,8 @@
         <activity android:name=".usertask.UserTaskDemoActivity$A" />
         <activity android:name=".usertask.UserTaskDemoActivity$B" />
 
-        <activity android:name=".joke.JokeOfDayActivity" />
+        <activity android:name=".joke.pull.JokeOfDayActivity" />
+        <activity android:name=".joke.reactive.JokeOfDayActivityReactive" />
 
         <activity
             android:name=".login.LoginActivity"

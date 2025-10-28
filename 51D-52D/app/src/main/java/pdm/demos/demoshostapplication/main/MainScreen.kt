@@ -32,12 +32,14 @@ enum class TitleScreenNavigationIntent {
     NavigateToCrowdTally,
     NavigateToUserTask,
     NavigateToJokeOfTheDay,
+    NavigateToJokeOfTheDayReactive,
     NavigateToLogin,
 }
 
 const val CROWD_TALLY_BUTTON_TAG = "crowd_tally_button"
 const val USER_TASK_BUTTON_TAG = "user_task_button"
 const val JOKE_OF_DAY_BUTTON_TAG = "joke_button"
+const val JOKE_OF_DAY_REACTIVE_BUTTON_TAG = "joke_reactive_button"
 const val LOGIN_BUTTON_TAG = "login_button"
 
 /**
@@ -80,6 +82,12 @@ fun MainScreen(
                 modifier = Modifier.testTag(tag = JOKE_OF_DAY_BUTTON_TAG).padding(vertical = 8.dp)
             ) {
                 Text(text = stringResource(id = R.string.main_navigate_jokes) )
+            }
+            Button(
+                onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToJokeOfTheDayReactive) },
+                modifier = Modifier.testTag(tag = JOKE_OF_DAY_REACTIVE_BUTTON_TAG).padding(vertical = 8.dp)
+            ) {
+                Text(text = stringResource(id = R.string.main_navigate_jokes_reactive) )
             }
             Button(
                 onClick = { onNavigate(TitleScreenNavigationIntent.NavigateToLogin) },

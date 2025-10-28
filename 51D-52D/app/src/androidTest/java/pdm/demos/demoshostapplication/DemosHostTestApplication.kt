@@ -1,7 +1,7 @@
 package pdm.demos.demoshostapplication
 
 import android.app.Application
-import pdm.demos.demoshostapplication.joke.domain.FakeJokesService
+import pdm.demos.demoshostapplication.joke.common.domain.FakeJokesService
 import pdm.demos.demoshostapplication.login.domain.FakeLoginService
 
 

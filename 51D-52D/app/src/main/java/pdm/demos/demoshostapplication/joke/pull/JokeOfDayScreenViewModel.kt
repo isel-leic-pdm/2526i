@@ -1,12 +1,17 @@
-package pdm.demos.demoshostapplication.joke
+package pdm.demos.demoshostapplication.joke.pull
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import pdm.demos.demoshostapplication.joke.domain.Joke
-import pdm.demos.demoshostapplication.joke.domain.JokesService
+import pdm.demos.demoshostapplication.joke.common.domain.Joke
+import pdm.demos.demoshostapplication.joke.common.domain.JokesService
+
+const val POLL_PERIOD_MILLIS = 10000L
 
 /**
  * Represents the state of the joke of day screen.
@@ -39,26 +44,37 @@ class JokeOfDayScreenViewModel(val jokeService: JokesService) : ViewModel() {
         }
     }
 
-    // var currentState: JokeOfDayScreenState by mutableStateOf(value = JokeOfDayScreenState.Idle)
+    /**
+     * The current state of the screen.
+     */
+    private var _currentState by mutableStateOf<JokeOfDayScreenState>(JokeOfDayScreenState.Idle)
 
-    val currentStateFlow = MutableStateFlow<JokeOfDayScreenState>(JokeOfDayScreenState.Idle)
+    /**
+     * Public read-only access to the current state of the screen.
+     */
+    val currentState: JokeOfDayScreenState
+        get() = _currentState
 
+    /**
+     * When instantiated, starts collecting jokes from the service to update the screen state.
+     */
     init {
         viewModelScope.launch {
-            jokeService.joke.collect {
-                currentStateFlow.value = JokeOfDayScreenState.Success(joke = it)
+            while (true) {
+                delay(timeMillis = POLL_PERIOD_MILLIS)
+                internalFetchJoke()
             }
         }
     }
 
     private suspend fun internalFetchJoke() {
-        currentStateFlow.value = try {
-            currentStateFlow.value = JokeOfDayScreenState.Loading
-            jokeService.fetchJoke().let {
-                JokeOfDayScreenState.Success(it)
+        _currentState = try {
+            _currentState = JokeOfDayScreenState.Loading
+            jokeService.fetchJoke().getOrThrow().let {
+                JokeOfDayScreenState.Success(joke = it)
             }
         } catch (e: Exception) {
-            JokeOfDayScreenState.Error(e)
+            JokeOfDayScreenState.Error(exception = e)
         }
     }
 
@@ -66,7 +82,7 @@ class JokeOfDayScreenViewModel(val jokeService: JokesService) : ViewModel() {
      * Fetches a new joke from the service and updates the screen state accordingly.
      */
     fun fetchJoke() {
-        if (currentStateFlow.value !is JokeOfDayScreenState.Loading) {
+        if (_currentState !is JokeOfDayScreenState.Loading) {
             viewModelScope.launch {
                 internalFetchJoke()
             }
@@ -77,8 +93,8 @@ class JokeOfDayScreenViewModel(val jokeService: JokesService) : ViewModel() {
      * Resets the screen state to idle.
      */
     fun resetToIdle() {
-        if (currentStateFlow.value !is JokeOfDayScreenState.Loading) {
-            currentStateFlow.value = JokeOfDayScreenState.Idle
+        if (_currentState !is JokeOfDayScreenState.Loading) {
+            _currentState = JokeOfDayScreenState.Idle
         }
     }
 }

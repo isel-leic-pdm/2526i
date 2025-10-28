@@ -5,9 +5,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import pdm.demos.demoshostapplication.joke.domain.FakeJokesService
-import pdm.demos.demoshostapplication.joke.domain.JokesService
-import pdm.demos.demoshostapplication.joke.http.IcanhazDadJokes
+import pdm.demos.demoshostapplication.joke.common.domain.JokesService
+import pdm.demos.demoshostapplication.joke.common.http.IcanhazDadJokes
 import pdm.demos.demoshostapplication.login.domain.FakeLoginService
 import pdm.demos.demoshostapplication.login.domain.LoginService
 
