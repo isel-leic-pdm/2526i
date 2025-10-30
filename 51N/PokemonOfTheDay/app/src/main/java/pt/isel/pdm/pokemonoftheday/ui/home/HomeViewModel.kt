@@ -9,23 +9,26 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 import pt.isel.pdm.pokemonoftheday.services.FakePokedexService
 import pt.isel.pdm.pokemonoftheday.services.PokedexService
+import pt.isel.pdm.pokemonoftheday.services.PokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.services.Pokemons
 
 
 sealed interface HomeViewState {
-    data class ValidPokemon(val pokemon: PokemonData) : HomeViewState
+    data class ValidPokemon(val pokemon: PokemonData, val isFav: Boolean) : HomeViewState
     data class Error(val error: Exception) : HomeViewState
     data object Loading : HomeViewState
     data object Empty : HomeViewState
 }
 
 class HomeViewModel(
-    private val service: PokedexService
+    private val service: PokedexService,
+    private val pokemonFavouriteService: PokemonFavouriteService
 ) : ViewModel() {
 
     var screenState by mutableStateOf<HomeViewState>(HomeViewState.Empty)
@@ -34,12 +37,28 @@ class HomeViewModel(
         screenState = HomeViewState.Loading
         viewModelScope.launch {
             try {
-                screenState = HomeViewState.ValidPokemon(service.getPokemonOfTheDay())
+                val pokemon = service.getPokemonOfTheDay()
+
+                val currFav = pokemonFavouriteService.currentFavourite.first()
+
+                screenState = HomeViewState.ValidPokemon(pokemon, currFav == pokemon.id)
             } catch (e: Exception) {
                 screenState = HomeViewState.Error(e)
             }
         }
     }
+
+
+    fun setCurrentAsFavourite() {
+        viewModelScope.launch {
+            val state = screenState
+            if (state is HomeViewState.ValidPokemon) {
+                pokemonFavouriteService.set(state.pokemon.id)
+                screenState = HomeViewState.ValidPokemon(state.pokemon, true)
+            }
+        }
+    }
+
 }
 
 class HomeViewModelOnlyMutableState(
@@ -65,12 +84,12 @@ class HomeViewModelOnlyMutableState(
         }
     }
 }
-
+/*
 class HomeViewModelFactory(
     private val service: PokedexService
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
-        return HomeViewModel(service) as T
+        return HomeViewModel2(service) as T
     }
-}
+}*/

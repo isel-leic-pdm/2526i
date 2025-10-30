@@ -20,6 +20,12 @@
             android:exported="false"
             android:label="@string/title_activity_about"
             android:theme="@style/Theme.PokemonOfTheDay" />
+
+        <activity
+            android:name=".ui.flow.FlowPlaygroundActivity"
+            android:exported="true"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.PokemonOfTheDay" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true"

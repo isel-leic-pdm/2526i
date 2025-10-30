@@ -31,7 +31,10 @@ class HomeActivity : ComponentActivity() {
 
     val vm by viewModels<HomeViewModel> {
         viewModelInit {
-            HomeViewModel((application as DependencyContainer).pokedexService)
+            HomeViewModel(
+                (application as DependencyContainer).pokedexService,
+                (application as DependencyContainer).storageService
+            )
         }
     }
 

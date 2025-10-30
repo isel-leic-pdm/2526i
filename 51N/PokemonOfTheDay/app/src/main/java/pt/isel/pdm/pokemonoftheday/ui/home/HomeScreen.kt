@@ -1,17 +1,23 @@
 package pt.isel.pdm.pokemonoftheday.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
@@ -44,7 +50,16 @@ fun HomeScreen(
             Box(modifier = Modifier.padding(it)) {
                 when (val state = viewModel.screenState) {
                     is HomeViewState.ValidPokemon -> {
-                        FullScreenPokemonDataView(state.pokemon)
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            FavouriteButton(state.isFav, onClick = {
+                                viewModel.setCurrentAsFavourite()
+                            })
+                            FullScreenPokemonDataView(state.pokemon)
+
+                        }
                         Button(onClick = { viewModel.refreshPokemonOfTheDay() }) { }
                     }
 
@@ -71,6 +86,20 @@ fun HomeScreen(
     }
 }
 
+@Composable
+fun FavouriteButton(isSet: Boolean, onClick: () -> Unit) {
+
+    IconButton(
+        onClick = onClick,
+    ) {
+        Icon(
+            imageVector = Icons.Default.Star,
+            contentDescription = "",
+            tint = (if (isSet) Color.Yellow else Color.Gray),
+            modifier = Modifier.size(40.dp)
+        )
+    }
+}
 
 @Composable
 fun HomeScreenOnlyMutableState(

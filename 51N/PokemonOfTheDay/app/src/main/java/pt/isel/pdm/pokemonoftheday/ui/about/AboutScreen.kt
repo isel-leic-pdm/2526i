@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -18,6 +19,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -32,11 +34,13 @@ import pt.isel.pdm.pokemonoftheday.ui.theme.PokemonOfTheDayTheme
 import java.util.Locale
 
 
-
 @Composable
 fun AboutScreen(
+    viewModel: AboutViewModel,
     backPressed: () -> Unit
 ) {
+
+    val favPokemonId = viewModel.currentFavFlow.collectAsState().value
 
     PokemonOfTheDayTheme {
         Scaffold(
@@ -57,12 +61,20 @@ fun AboutScreen(
                     .padding(innerPadding)
                     .fillMaxSize()
             ) {
-                Text(
-                    text = stringResource(R.string.about_text),
-                    style = MaterialTheme.typography.titleLarge,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.align(Alignment.Center)
-                )
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = stringResource(R.string.about_text),
+                        style = MaterialTheme.typography.titleLarge,
+                        textAlign = TextAlign.Center,
+                    )
+
+                    if (favPokemonId != null)
+                        Text(stringResource(R.string.fav_pokemon_prefix) + favPokemonId)
+                }
+
             }
         }
     }
