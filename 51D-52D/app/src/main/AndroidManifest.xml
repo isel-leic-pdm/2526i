@@ -12,6 +12,9 @@
         </intent>
     </queries>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -40,7 +43,8 @@
         <activity android:name=".usertask.UserTaskDemoActivity$A" />
         <activity android:name=".usertask.UserTaskDemoActivity$B" />
 
-        <activity android:name=".joke.JokeOfDayActivity" />
+        <activity android:name=".joke.pull.JokeOfDayActivity" />
+        <activity android:name=".joke.reactive.JokeOfDayActivityReactive" />
 
         <activity
             android:name=".login.LoginActivity"

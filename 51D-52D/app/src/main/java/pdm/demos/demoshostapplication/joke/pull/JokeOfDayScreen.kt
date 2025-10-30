@@ -1,9 +1,9 @@
-package pdm.demos.demoshostapplication.joke
+package pdm.demos.demoshostapplication.joke.pull
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import pdm.demos.demoshostapplication.R
-import pdm.demos.demoshostapplication.joke.domain.FakeJokesService
+import pdm.demos.demoshostapplication.joke.common.domain.FakeJokesService
 import pdm.demos.demoshostapplication.ui.ErrorAlert
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 

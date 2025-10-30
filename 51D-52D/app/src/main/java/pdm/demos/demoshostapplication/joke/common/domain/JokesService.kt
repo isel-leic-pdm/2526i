@@ -1,8 +1,9 @@
-package pdm.demos.demoshostapplication.joke.domain
+package pdm.demos.demoshostapplication.joke.common.domain
 
 import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import pdm.demos.demoshostapplication.JOKE_APP_TAG
 import java.net.URL
 import kotlin.random.Random
@@ -11,18 +12,22 @@ import kotlin.random.Random
 /**
  * Service to get jokes.
  * An abstraction to be implemented by different approaches using different
- * data sources.
+ * data sources. The service provides both push and pull operations.
  */
 interface JokesService {
 
-    val joke: Flow<Joke>
-
-    fun getJokes(): Flow<Joke>
+    /**
+     * The flow of jokes produced by the service. This is a push operation.
+     * Each time a new joke is available, it is emitted through the flow encapsulated in a [Result]
+     * If an error occurs during the fetch, a failure [Result] is emitted instead.
+     */
+    val joke: Flow<Result<Joke>>
 
     /**
-     * Returns a random joke.
+     * Fetches a random joke and returns it. This is a pull operation.
+     * @return A [Result] wrapping the fetched [Joke] or an error if the fetch failed.
      */
-    suspend fun getJoke(): Joke
+    suspend fun fetchJoke(): Result<Joke>
 }
 
 /**
@@ -34,26 +39,31 @@ data class Joke(val text: String, val source: URL) {
     }
 }
 
+private const val POLL_PERIOD_MILLIS = 10000L
+private const val SIMULATED_NETWORK_DELAY_MILLIS = 3000L
+
 /**
  * Fake implementation of the JokesService. It returns a random joke from a pre-established list
  * of jokes.
  */
 class FakeJokesService : JokesService {
-    
-    override val joke: Flow<Joke>
-        get() = TODO("Not yet implemented")
 
-    override fun getJokes(): Flow<Joke> {
-        TODO("Not yet implemented")
-    }
+    override val joke: Flow<Result<Joke>>
+        get() = flow {
+            while (true) {
+                val index = Random.nextInt(from = 0, until = jokes.size)
+                delay(POLL_PERIOD_MILLIS)
+                emit(Result.success(jokes[index]))
+            }
+        }
 
-    override suspend fun getJoke(): Joke {
+    override suspend fun fetchJoke(): Result<Joke> {
         Log.v(JOKE_APP_TAG, "FakeJokesService.getJoke() started")
         val index = Random.nextInt(from = 0, until = jokes.size)
-        delay(3000) // Simulate network delay
+        delay(SIMULATED_NETWORK_DELAY_MILLIS)
         val theJoke = jokes[index]
         Log.v(JOKE_APP_TAG, "FakeJokesService.getJoke() finishing")
-        return theJoke
+        return Result.success(theJoke)
     }
 
     companion object {

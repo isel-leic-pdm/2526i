@@ -4,6 +4,7 @@
     <string name="main_navigate_crowd_tally" translatable="false">Crowd Tally Demo</string>
     <string name="main_navigate_user_task" translatable="false">User Task Demo</string>
     <string name="main_navigate_jokes" translatable="false">Jokes Demo</string>
+    <string name="main_navigate_jokes_reactive" translatable="false">Reactive Jokes Demo</string>
     <string name="main_navigate_login" translatable="false">Login Demo</string>
 
 
@@ -18,6 +19,7 @@
 
     <string name="jokes_title" translatable="false">Joke of the Day</string>
     <string name="jokes_error_api_title">Error accessing the server</string>
+    <string name="jokes_error_api_message">An error occurred while trying to fetch a joke</string>
     <string name="jokes_error_retry_button_text">OK</string>
     <string name="jokes_error_could_not_reach_api">Please check if the device is connected to the internet</string>
 

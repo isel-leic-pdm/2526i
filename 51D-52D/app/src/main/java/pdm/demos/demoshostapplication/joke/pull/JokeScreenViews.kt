@@ -1,4 +1,4 @@
-package pdm.demos.demoshostapplication.joke
+package pdm.demos.demoshostapplication.joke.pull
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pdm.demos.demoshostapplication.R
-import pdm.demos.demoshostapplication.joke.domain.Joke
+import pdm.demos.demoshostapplication.joke.common.domain.Joke
 import pdm.demos.demoshostapplication.ui.ErrorAlert
 import pdm.demos.demoshostapplication.ui.RefreshFab
 import pdm.demos.demoshostapplication.ui.TopBar
