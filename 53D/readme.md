@@ -144,3 +144,22 @@
 * ViewModel (continued)
   * ViewModelScope
   * Launching coroutines from the ViewModel
+
+## Week 8 - 3/11/2025
+
+### Subject: Local storage with Preferences DataStore
+
+#### Topic breakdown:
+* General characterization
+  * Data model (i.e. key-value store)
+  * Supported data types
+* Kotlin concurrency model
+  * Flows, revisited 
+
+### For reference:
+  * [Asynchronous Flow | Kotlin Documentation](https://kotlinlang.org/docs/flow.html) 
+  * [Kotlin flows on Android](https://developer.android.com/kotlin/flow#callback)
+  * [Kotlin Coroutines  by Marcin Moskala, chapter 3](https://kt.academy/book/coroutines)
+  * [DataStore Overview](https://developer.android.com/topic/libraries/architecture/datastore)
+  * [TDD Is The Best Design Technique](https://www.youtube.com/watch?v=ln4WnxX-wrw)
+  
