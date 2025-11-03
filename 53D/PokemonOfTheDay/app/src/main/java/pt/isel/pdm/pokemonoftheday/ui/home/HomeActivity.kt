@@ -33,7 +33,7 @@ class HomeActivity : ComponentActivity() {
         viewModelInit {
             HomeViewModel(
                 (application as DependencyContainer).pokedexService,
-                (application as DependencyContainer).storageService
+                (application as DependencyContainer).favouriteService
             )
         }
     }

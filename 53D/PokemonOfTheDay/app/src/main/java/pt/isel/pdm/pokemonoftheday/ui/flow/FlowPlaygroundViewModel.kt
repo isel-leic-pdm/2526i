@@ -107,11 +107,13 @@ class FlowPlaygroundViewModel(
             val flowNrOfInts = f.count()
             Log.d(TAG, "flow count values:  $flowNrOfInts")
 
+
             f.filter { it % 2 == 0 }
                 .map { it * 2 }
                 .collect {
                     Log.d(TAG, "value after filter and map  $it")
                 }
+
         }
 
     }

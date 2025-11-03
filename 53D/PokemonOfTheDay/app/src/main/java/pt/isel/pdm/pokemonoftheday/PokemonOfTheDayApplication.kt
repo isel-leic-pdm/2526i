@@ -5,15 +5,14 @@ import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import pt.isel.pdm.pokemonoftheday.services.DataStoreStorageService
 import pt.isel.pdm.pokemonoftheday.services.FakePokedexService
-import pt.isel.pdm.pokemonoftheday.services.FakeStorageService
+import pt.isel.pdm.pokemonoftheday.services.FakePokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.services.PokedexService
-import pt.isel.pdm.pokemonoftheday.services.StorageService
+import pt.isel.pdm.pokemonoftheday.services.PokemonFavouriteService
 
 interface DependencyContainer {
     val pokedexService: PokedexService
-    val storageService: StorageService
+    val favouriteService: PokemonFavouriteService
 }
 
 class PokemonOfTheDayApplication : Application(),
@@ -23,11 +22,9 @@ class PokemonOfTheDayApplication : Application(),
 
     override val pokedexService: PokedexService
             by lazy { FakePokedexService() }
-    override val storageService: StorageService
-            by lazy {
-                //FakeStorageService()
-                  DataStoreStorageService(appDataStore)
-            }
+
+    override val favouriteService: PokemonFavouriteService
+            by lazy { FakePokemonFavouriteService() }
 
     override fun onCreate() {
         Log.d("App", "App initializing...")

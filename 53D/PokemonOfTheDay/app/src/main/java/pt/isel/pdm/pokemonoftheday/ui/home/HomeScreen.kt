@@ -1,5 +1,6 @@
 package pt.isel.pdm.pokemonoftheday.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -50,19 +51,20 @@ fun HomeScreen(
 
                 when (val state = viewModel.state) {
                     is HomeViewState.Content -> {
-                        Column (
+                        Column(
                             horizontalAlignment = Alignment.CenterHorizontally
-                        ){
-                            FavouriteButton(
-                                isSet = state.isFav,
-                                onClick = {
-                                    if (state.isFav)
-                                        viewModel.unmarkAsFavourite()
-                                    else
-                                        viewModel.markAsFavourite()
-                                })
+                        ) {
 
-                            FullScreenPokemonDataView(state.pokemon)
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                FavouriteButton(state.isFav, onClick = {
+                                    viewModel.toggleFavourite()
+                                })
+                                FullScreenPokemonDataView(state.pokemon)
+
+                            }
 
 
                         }

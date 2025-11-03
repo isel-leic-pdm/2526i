@@ -24,7 +24,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import okhttp3.internal.wait
 import pt.isel.pdm.pokemonoftheday.DependencyContainer
-import pt.isel.pdm.pokemonoftheday.services.StorageService
 import pt.isel.pdm.pokemonoftheday.ui.common.viewModelInit
 import pt.isel.pdm.pokemonoftheday.ui.home.HomeViewModel
 import pt.isel.pdm.pokemonoftheday.ui.theme.PokemonOfTheDayTheme
@@ -37,7 +36,7 @@ class AboutActivity : ComponentActivity() {
     val vm by viewModels<AboutViewModel> {
         viewModelInit {
             AboutViewModel(
-                (application as DependencyContainer).storageService
+                (application as DependencyContainer).favouriteService
             )
         }
     }
@@ -62,12 +61,4 @@ class AboutActivity : ComponentActivity() {
 
 }
 
-class AboutViewModel(serv: StorageService) : ViewModel(
-) {
-    val fav = serv.favourite.stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(),
-        null
-    )
-}
 

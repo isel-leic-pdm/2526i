@@ -40,7 +40,8 @@ fun AboutScreen(
     backPressed: () -> Unit
 ) {
 
-    val pokeId = vm.fav.collectAsState().value
+    // val fav = vm.favourite.collectAsState().value
+    val fav = vm.quickFav.collectAsState().value
     PokemonOfTheDayTheme {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
@@ -70,8 +71,9 @@ fun AboutScreen(
                         textAlign = TextAlign.Center,
                     )
 
-                    if (pokeId != null)
-                        Text(text = "Fav Pokemon: " + pokeId.toString())
+                    if (fav != null)
+                        Text(stringResource(R.string.FavouritePrefix) + fav)
+
                 }
 
             }

@@ -1,5 +1,6 @@
 package pt.isel.pdm.pokemonoftheday.ui.home
 
+import android.R
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,8 +20,8 @@ import kotlinx.coroutines.withContext
 import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 import pt.isel.pdm.pokemonoftheday.services.FakePokedexService
 import pt.isel.pdm.pokemonoftheday.services.PokedexService
+import pt.isel.pdm.pokemonoftheday.services.PokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.services.Pokemons
-import pt.isel.pdm.pokemonoftheday.services.StorageService
 
 sealed interface HomeViewState {
     data object None : HomeViewState
@@ -31,7 +32,7 @@ sealed interface HomeViewState {
 
 class HomeViewModel(
     private val service: PokedexService,
-    private val storageService: StorageService
+    private val favouriteService: PokemonFavouriteService
 ) : ViewModel() {
 
     var state by mutableStateOf<HomeViewState>(HomeViewState.None)
@@ -42,34 +43,34 @@ class HomeViewModel(
         viewModelScope
             .launch {
                 try {
-                    val fav  = storageService.favourite.first()
                     val p = service.getPokemonOfTheDay()
-                    state = HomeViewState.Content(p, fav == p.id)
+                    val isFav = favouriteService.favourite.first() == p.id
+                    state = HomeViewState.Content(p, isFav)
                 } catch (e: Exception) {
                     state = HomeViewState.Error(e)
                 }
             }
     }
 
-    fun markAsFavourite() {
+    fun toggleFavourite() {
         viewModelScope.launch {
-            val s = state
-            if (s is HomeViewState.Content && s.isFav == false) {
-                storageService.setFavourite(s.pokemon.id)
-                state = s.copy(isFav = true)
+            val screenState = state
+            if (screenState is HomeViewState.Content) {
+                if (screenState.isFav)
+                {
+                    favouriteService.clearFavourite()
+                    state = HomeViewState.Content(screenState.pokemon, false)
+                }
+                else
+                {
+                    favouriteService.setFavourite(screenState.pokemon.id)
+                    state = HomeViewState.Content(screenState.pokemon, true)
+
+                }
             }
         }
     }
 
-    fun unmarkAsFavourite() {
-        viewModelScope.launch {
-            val s = state
-            if (s is HomeViewState.Content && s.isFav) {
-                storageService.removeFavourite()
-                state = s.copy(isFav = false)
-            }
-        }
-    }
 }
 
 
