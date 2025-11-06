@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons)
+    implementation(libs.androidx.datastore)
 
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)

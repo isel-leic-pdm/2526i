@@ -33,8 +33,9 @@ class IcanhazDadJokes(private val client: HttpClient) : JokesService {
     override suspend fun fetchJoke(): Result<Joke> =
         try {
             delay(ICANHAZ_SIMULATED_NETWORK_DELAY_MILLIS)
-            val joke = client
+            val response = client
                 .get(url = source) { header("accept", "application/json") }
+            val joke = response
                 .body<JokeDto>()
                 .toJoke(source)
             Result.success(joke)
