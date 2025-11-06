@@ -103,7 +103,7 @@
 * [ViewModelStoreOwner](https://developer.android.com/reference/androidx/lifecycle/ViewModelStoreOwner)
 
 
-## Week 4 - 6/10/2025
+## Week 5 - 6/10/2025
 ### Subject: Building a UI with Jetpack Compose - State management (introduction to MVVM)
 
 * The Activity component: continued
@@ -132,7 +132,7 @@
 * [ViewModelStore](https://developer.android.com/reference/androidx/lifecycle/ViewModelStore)
 * [ViewModelStoreOwner](https://developer.android.com/reference/androidx/lifecycle/ViewModelStoreOwner
 
-## Week 5 - 13/10/2025
+## Week 6 - 13/10/2025
 
 ### Subject: Beyond the UI - Manual Dependency Injection
 
@@ -153,7 +153,7 @@
 * [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate)
 
 
-## Week 6 - 20/10/2025
+## Week 7 - 20/10/2025
 
 ### Subject: Beyond the UI - ViewModel (continued)
 
@@ -169,7 +169,7 @@
   * ViewModelScope
   * Launching coroutines from the ViewModel
 
-## Week 7 - 27/10/2025
+## Week 8 - 27/10/2025
 
 ### Subject: Local storage with Preferences DataStore
 
@@ -186,4 +186,49 @@
   * [Kotlin Coroutines  by Marcin Moskala, chapter 3](https://kt.academy/book/coroutines)
   * [DataStore Overview](https://developer.android.com/topic/libraries/architecture/datastore)
   * [TDD Is The Best Design Technique](https://www.youtube.com/watch?v=ln4WnxX-wrw)
+
+
+## Week 9 - 3/11/2025
+
+### Subject: Persistent storage with Firestore and Comunication with HTTP APIs
+
+#### Topic breakdown:
+* General characterization
+  * Data model (i.e. Document DB)
+  * Documents, collections and references
+  * Supported data types
+* Description of the Android SDK API
+  * Adding, updating and deleting data
+  * Reading data: queries and observable queries
+* The Android application as a HTTP client
+  * Motivation and consequences of distribution
+  * Required permissions
+* HTTP communication with Ktor client
+  * Programming model
+  * Making assinchrounous requests
+* JSON serialization with Kotlinx Serialization
   
+### For reference:
+* Prepare your environment for Firebase
+  * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
+  * [Install, configure and integrate Local Emulator Suite](https://firebase.google.com/docs/emulator-suite/install_and_configure)
+  * [Connect your app and start prototyping | Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore)
+* Firestore API
+  * [Getting started with Cloud Firestore](https://firebase.google.com/docs/firestore/quickstart)
+  * [Cloud Firestore Data model | Firebase](https://firebase.google.com/docs/firestore/data-model) 
+  * [Supported data types | Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/data-types)
+  * [Add data to Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/add-data)
+  * [Delete data from Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/delete-data)
+  * [Get data with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/get-data)
+  * [Get real time updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
+  * [Firestore API Docs](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/package-summary)
+* Kotlin concurrency model
+  * [Asynchronous Flow | Kotlin Documentation](https://kotlinlang.org/docs/flow.html) 
+  * [Kotlin flows on Android](https://developer.android.com/kotlin/flow#callback)
+* Extra material
+  * [TDD Is The Best Design Technique](https://www.youtube.com/watch?v=ln4WnxX-wrw)
+* [Connecting to the network](https://developer.android.com/training/basics/network-ops/connecting)
+* [Ktor Client](https://ktor.io/docs/client-create-multiplatform-application.html#ktor-dependencies)
+  * [Ktor engines](https://ktor.io/docs/client-engines.html)
+  * [Content negotiation](https://ktor.io/docs/client-serialization.html)
+  * [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)

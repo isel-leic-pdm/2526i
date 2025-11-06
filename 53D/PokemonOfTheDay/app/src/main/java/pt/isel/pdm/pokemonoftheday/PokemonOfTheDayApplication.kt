@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import pt.isel.pdm.pokemonoftheday.services.DataStorePokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.services.FakePokedexService
 import pt.isel.pdm.pokemonoftheday.services.FakePokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.services.PokedexService
@@ -24,7 +25,10 @@ class PokemonOfTheDayApplication : Application(),
             by lazy { FakePokedexService() }
 
     override val favouriteService: PokemonFavouriteService
-            by lazy { FakePokemonFavouriteService() }
+            by lazy {
+                //FakePokemonFavouriteService()
+                DataStorePokemonFavouriteService(appDataStore)
+            }
 
     override fun onCreate() {
         Log.d("App", "App initializing...")
