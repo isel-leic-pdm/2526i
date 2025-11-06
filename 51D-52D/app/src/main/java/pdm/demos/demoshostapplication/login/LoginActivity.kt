@@ -22,8 +22,10 @@ class LoginActivity : ComponentActivity() {
     }
 
     private val viewModel: LoginScreenViewModel by viewModels {
+        val diContainer = application as DependenciesContainer
         LoginScreenViewModel.getFactory(
-            service = (application as DependenciesContainer).loginService
+            service = diContainer.loginService,
+            repo = diContainer.authInfoRepo
         )
     }
 
