@@ -19,6 +19,7 @@ import pt.isel.pdm.pokemonoftheday.ui.BaseActivity
 import pt.isel.pdm.pokemonoftheday.ui.about.AboutActivity
 import pt.isel.pdm.pokemonoftheday.ui.common.setAppLocale
 import pt.isel.pdm.pokemonoftheday.ui.common.viewModelInit
+import pt.isel.pdm.pokemonoftheday.ui.firestorePlayground.FirestoreActivity
 import java.util.Locale
 
 class HomeActivity : BaseActivity() {
@@ -48,6 +49,9 @@ class HomeActivity : BaseActivity() {
                 navToAbout = {
                     navigate<AboutActivity>()
                     //AboutActivity.navigate(this)
+                },
+                navToFirestorePlayground = {
+                    navigate<FirestoreActivity> { }
                 },
                 viewModel = vm
             )

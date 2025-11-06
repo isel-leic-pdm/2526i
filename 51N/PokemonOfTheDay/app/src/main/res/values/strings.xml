@@ -7,4 +7,7 @@
     <string name="loading">Loading...</string>
     <string name="retry">retry</string>
     <string name="fav_pokemon_prefix"><![CDATA["Favourite Pokemon id is -> "]]></string>
+    <string name="title_activity_firestore">FirestoreActivity</string>
+    <string name="firestore_playground">Firestore Playground</string>
+    <string name="title_activity_simple_model_detail">SimpleModelDetailActivity</string>
 </resources>

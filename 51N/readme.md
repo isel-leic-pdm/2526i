@@ -222,11 +222,6 @@
   * [Get data with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/get-data)
   * [Get real time updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
   * [Firestore API Docs](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/package-summary)
-* Kotlin concurrency model
-  * [Asynchronous Flow | Kotlin Documentation](https://kotlinlang.org/docs/flow.html) 
-  * [Kotlin flows on Android](https://developer.android.com/kotlin/flow#callback)
-* Extra material
-  * [TDD Is The Best Design Technique](https://www.youtube.com/watch?v=ln4WnxX-wrw)
 * [Connecting to the network](https://developer.android.com/training/basics/network-ops/connecting)
 * [Ktor Client](https://ktor.io/docs/client-create-multiplatform-application.html#ktor-dependencies)
   * [Ktor engines](https://ktor.io/docs/client-engines.html)

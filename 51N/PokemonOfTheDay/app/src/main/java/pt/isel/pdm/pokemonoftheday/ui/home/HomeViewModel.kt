@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pt.isel.pdm.pokemonoftheday.domain.PokemonData
@@ -32,6 +34,13 @@ class HomeViewModel(
 ) : ViewModel() {
 
     var screenState by mutableStateOf<HomeViewState>(HomeViewState.Empty)
+
+    val secondPokemon = service.pokemonOfTheSecond
+        .stateIn(
+            viewModelScope,
+            SharingStarted.Lazily,
+            PokemonData.None
+        )
 
     fun refreshPokemonOfTheDay() {
         screenState = HomeViewState.Loading

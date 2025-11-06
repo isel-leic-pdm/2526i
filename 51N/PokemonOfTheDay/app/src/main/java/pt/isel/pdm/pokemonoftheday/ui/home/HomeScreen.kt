@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,14 +36,18 @@ import pt.isel.pdm.pokemonoftheday.ui.theme.PokemonOfTheDayTheme
 @Composable
 fun HomeScreen(
     navToAbout: () -> Unit,
+    navToFirestorePlayground: () -> Unit,
     viewModel: HomeViewModel
 ) {
+
+    val secondPokemon = viewModel.secondPokemon.collectAsState()
     PokemonOfTheDayTheme {
         Scaffold(
             topBar = {
                 CustomAppTopBar(
                     navActions = NavigationActions(
-                        onAboutAction = navToAbout
+                        onAboutAction = navToAbout,
+                        onFirestorePlayground = navToFirestorePlayground
                     )
                 )
             }
@@ -58,6 +63,10 @@ fun HomeScreen(
                                 viewModel.setCurrentAsFavourite()
                             })
                             FullScreenPokemonDataView(state.pokemon)
+
+                            if (secondPokemon != PokemonData.None)
+                                FullScreenPokemonDataView(secondPokemon.value)
+
 
                         }
                         Button(onClick = { viewModel.refreshPokemonOfTheDay() }) { }

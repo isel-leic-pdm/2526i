@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -19,7 +20,7 @@ import pt.isel.pdm.pokemonoftheday.R
 class NavigationActions(
     val onBackAction: (() -> Unit)? = null,
     val onAboutAction: (() -> Unit)? = null,
-    val otherAction : (() -> Unit)? = null,
+    val onFirestorePlayground : (() -> Unit)? = null,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,6 +49,10 @@ fun CustomAppTopBar(
                 icon = Icons.Default.Info,
                 action = navActions.onAboutAction,
                 modifier = Modifier.testTag(CustomAppTopBarTestTags.ABOUT_BUTTON)
+            )
+            ConditionalIconButton(
+                icon = Icons.Default.Warning,
+                action = navActions.onFirestorePlayground,
             )
 
         }
