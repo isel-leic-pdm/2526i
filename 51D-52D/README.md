@@ -136,4 +136,94 @@
   * Launching coroutines from the ViewModel
 
 #### Lecture video:
-* Lecture 06 - Beyond the UI - ViewModel (continued) and Android concurrency model (coming soon)
+* [Lecture 06 - Beyond the UI - ViewModel (continued) and Android concurrency model](https://www.youtube.com/watch?v=N9KGMBgt7bE&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=5)
+
+#### For reference:
+* [ViewModel overview | Android Developers](https://developer.android.com/topic/libraries/architecture/viewmodel)
+  * [ViewModel lifecycle | Android Developers](https://developer.android.com/topic/libraries/architecture/viewmodel#lifecycle)
+  * [Use Kotlin coroutines with lifecycle-aware components | Android Developers](https://developer.android.com/topic/libraries/architecture/coroutines#viewmodelscope)
+* [Testing Kotlin coroutines on Android | Android Developers](https://developer.android.com/kotlin/coroutines/test)
+
+## Week 7 - 20/10/2025
+### Subject: State Management, revisited
+* State management in Jetpack Compose
+  * Review of presentation state
+  * ViewModel as the host for the UI state machine
+  * State hoisting revisited
+* Presentation state vs application state
+* Android application architectural considerations
+
+#### For reference:
+* [State and Jetpack Compose | Android Developers](https://developer.android.com/develop/ui/compose/state#managing-state) 
+* [Architecting your Compose UI | Jetpack Compose | Android Developers](https://developer.android.com/jetpack/compose/architecture)
+* [Guide to application architecture](https://developer.android.com/jetpack/guide)
+
+#### Lecture video:
+* [Lecture 07 - State management, revisited](https://www.youtube.com/watch?v=TKNAPhSQt3Q&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=6)
+
+## Week 8 - 27/10/2025
+### Subject: HTTP Communication in Android
+* The Android device as an HTTP client
+  * Motivation and implications of networking
+  * Required permissions
+* HTTP communication with Ktor
+  * Programming model
+  * Asynchronous request execution
+  * JSON serialization and deserialization with Ktor and Kotlin Serialization
+
+#### For reference:
+* [Connecting to the network | Android Developers](https://developer.android.com/training/basics/network-ops/connecting)
+* [Creating and configuring a client | Ktor Documentation](https://ktor.io/docs/client-create-and-configure.html)
+* [Making requests | Ktor Documentation](https://ktor.io/docs/client-requests.html)
+* [Content negotiation and serialization in Ktor Client | Ktor Documentation](https://ktor.io/docs/client-serialization.html)
+* [Kotlinx Serialization Documentation](https://kotlinlang.org/docs/serialization.html#add-plugins-and-dependencies)
+
+#### Lecture video:
+* [Lecture 08 - HTTP Communication in Android](https://www.youtube.com/watch?v=x3A9dKkq7eg&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=7)
+
+## Week 9 - 03/11/2025
+### Subject: Persistency with DataStore
+* Data persistency in Android using DataStore
+  * Overview of Preferences DataStore
+  * Data model and storage
+  * Storing and retrieving preferences data
+
+#### For reference:
+* [App Architecture: Data Layer | DataStore | Android Developers](https://developer.android.com/topic/libraries/architecture/datastore)
+
+#### Lecture video:
+* [Lecture 09 - Persistency with DataStore](https://www.youtube.com/watch?v=iTnL7lcZrjQ&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=8)
+
+### Week 10 - 10/11/2025 __(preview)__
+### Subject: Persistency with Firestore
+### Subject: Interaction models push vs pull (revisited)
+* Firestore data model (i.e. Document DB)
+  * General description
+  * Documents, collections and references
+  * Supported data types
+* Firestore Android SDK API
+  * Adding, updating and deleting data
+  * Reading data: queries and observable queries
+* Interaction models push vs pull (revisited)
+  * Distinction between data flow direction and initiative
+  * Interaction models in Android
+    * Pull model: initiative on the receiver
+    * Push model: initiative on the emitter
+
+### For reference:
+* Preparation:
+  * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
+  * [Install, configure and integrate Local Emulator Suite](https://firebase.google.com/docs/emulator-suite/install_and_configure)
+  * [Connect your app and start prototyping | Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore)
+* Firestore API:
+  * [Cloud Firestore Data model | Firebase](https://firebase.google.com/docs/firestore/data-model)
+  * [Supported data types | Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/data-types)
+  * [Add data to Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/add-data)
+  * [Delete data from Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/delete-data)
+  * [Get data with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/get-data)
+  * [Get real time updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
+
+#### Lecture video:
+* Lecture 10 - Persistency with Firestore __(coming soon)__
+
+
