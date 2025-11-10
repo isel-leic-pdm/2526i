@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
@@ -14,6 +16,8 @@ import pdm.demos.demoshostapplication.login.domain.AuthInfoRepo
 import pdm.demos.demoshostapplication.login.domain.FakeLoginService
 import pdm.demos.demoshostapplication.login.domain.LoginService
 import pdm.demos.demoshostapplication.login.infrastructure.AuthInfoPreferencesRepo
+import pdm.demos.demoshostapplication.pubsub.common.MessageBoardService
+import pdm.demos.demoshostapplication.pubsub.common.MessageBoardFirestore
 
 const val JOKE_APP_TAG = "JokeApp"
 
@@ -35,6 +39,11 @@ interface DependenciesContainer {
      * The repository to manage authentication information.
      */
     val authInfoRepo: AuthInfoRepo
+
+    /**
+     * The service to handle message board publishing and subscribing.
+     */
+    val messageBoardService: MessageBoardService
 }
 
 /**
@@ -64,16 +73,19 @@ class DemosHostApplication : DependenciesContainer, Application() {
     /**
      * The DataStore instance for storing authentication information.
      */
-    private val ds: DataStore<Preferences> by preferencesDataStore(name = "auth_info")
+    private val dataStore: DataStore<Preferences> by preferencesDataStore(name = "auth_info")
 
     override val jokeService by lazy {
         IcanhazDadJokes(client = httpClient)
-        // FakeJokesService()
     }
 
     override val loginService by lazy { FakeLoginService() }
 
     override val authInfoRepo: AuthInfoRepo by lazy {
-        AuthInfoPreferencesRepo(store = ds)
+        AuthInfoPreferencesRepo(store = dataStore)
+    }
+
+    override val messageBoardService: MessageBoardService by lazy {
+        MessageBoardFirestore(firestoreDb = Firebase.firestore)
     }
 }

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.android.parcelize)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -58,6 +59,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons)
     implementation(libs.androidx.datastore)
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.firestore)
 
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)

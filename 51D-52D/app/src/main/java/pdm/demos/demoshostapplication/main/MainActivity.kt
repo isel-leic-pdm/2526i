@@ -9,6 +9,8 @@ import pdm.demos.demoshostapplication.crowdtally.CrowdTallyActivity
 import pdm.demos.demoshostapplication.joke.pull.JokeOfDayActivity
 import pdm.demos.demoshostapplication.joke.reactive.JokeOfDayActivityReactive
 import pdm.demos.demoshostapplication.login.LoginActivity
+import pdm.demos.demoshostapplication.pubsub.publish.PublishActivity
+import pdm.demos.demoshostapplication.pubsub.subscribe.SubscribeActivity
 import pdm.demos.demoshostapplication.ui.theme.DemosHostApplicationTheme
 import pdm.demos.demoshostapplication.usertask.UserTaskDemoActivity
 
@@ -41,6 +43,8 @@ class MainActivity : ComponentActivity() {
             TitleScreenNavigationIntent.NavigateToJokeOfTheDay -> JokeOfDayActivity.navigate(ctx = this)
             TitleScreenNavigationIntent.NavigateToJokeOfTheDayReactive -> JokeOfDayActivityReactive.navigate(ctx = this)
             TitleScreenNavigationIntent.NavigateToLogin -> LoginActivity.navigate(ctx = this)
+            TitleScreenNavigationIntent.NavigateToSubscribePubSub -> SubscribeActivity.navigate(ctx = this)
+            TitleScreenNavigationIntent.NavigateToPublishPubSub -> PublishActivity.navigate(ctx = this)
         }
     }
 }

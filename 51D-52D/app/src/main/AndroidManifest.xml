@@ -49,6 +49,9 @@
         <activity
             android:name=".login.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".pubsub.subscribe.SubscribeActivity" />
+        <activity android:name=".pubsub.publish.PublishActivity" />
     </application>
 
 </manifest>

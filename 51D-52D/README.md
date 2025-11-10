@@ -194,7 +194,7 @@
 #### Lecture video:
 * [Lecture 09 - Persistency with DataStore](https://www.youtube.com/watch?v=iTnL7lcZrjQ&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=8)
 
-### Week 10 - 10/11/2025 __(preview)__
+### Week 10 - 10/11/2025
 ### Subject: Persistency with Firestore
 ### Subject: Interaction models push vs pull (revisited)
 * Firestore data model (i.e. Document DB)
@@ -224,6 +224,4 @@
   * [Get real time updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
 
 #### Lecture video:
-* Lecture 10 - Persistency with Firestore __(coming soon)__
-
-
+* [Lecture 10 - Persistency with Firestore](https://www.youtube.com/watch?v=YNLyt8wTXBk&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=9)

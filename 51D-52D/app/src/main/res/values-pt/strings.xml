@@ -11,4 +11,8 @@
     <string name="jokes_error_api_message">Ocorreu um erro ao tentar obter a piada</string>
     <string name="jokes_error_retry_button_text">OK</string>
     <string name="jokes_error_could_not_reach_api">Verifique se o dispositivo tem acesso à internet</string>
+    <string name="pub_sub_publish_button">Publicar Mensagem</string>
+    <string name="pub_sub_publish_error">Erro ao publicar a mensagem</string>
+    <string name="pub_sub_board_Id_input_label">Quadro</string>
+    <string name="pub_sub_message_input_label">Mensagem</string>
 </resources>

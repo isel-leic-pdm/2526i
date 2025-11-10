@@ -6,7 +6,8 @@
     <string name="main_navigate_jokes" translatable="false">Jokes Demo</string>
     <string name="main_navigate_jokes_reactive" translatable="false">Reactive Jokes Demo</string>
     <string name="main_navigate_login" translatable="false">Login Demo</string>
-
+    <string name="main_navigate_pub" translatable="false">Publish Pub-Sub Demo</string>
+    <string name="main_navigate_sub" translatable="false">Subscribe Pub-Sub Demo</string>
 
     <string name="crowd_tally_title" translatable="false">Crowd Tally</string>
     <string name="crowd_tally_settings_title">Settings</string>
@@ -24,4 +25,11 @@
     <string name="jokes_error_could_not_reach_api">Please check if the device is connected to the internet</string>
 
     <string name="login_title" translatable="false">Login Demo</string>
+
+    <string name="pub_sub_title" translatable="false">Pub-Sub Demo</string>
+    <string name="pub_sub_publish_button">Publish Message</string>
+    <string name="pub_sub_publish_error">Error publishing message</string>
+    <string name="pub_sub_board_Id_input_label">Board ID</string>
+    <string name="pub_sub_message_input_label">Message</string>
+
 </resources>
