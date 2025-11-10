@@ -38,8 +38,7 @@ class AuthInfoPreferencesRepo(private val store: DataStore<Preferences>) : AuthI
 
     fun Preferences.toAuthInfo(): AuthInfo? =
         this[userEmailKey]?.let {
-            val email = it
             val token = this[authTokenKey] ?: return null
-            AuthInfo(userEmail = email, authToken = token)
+            AuthInfo(userEmail = it, authToken = token)
         }
 }

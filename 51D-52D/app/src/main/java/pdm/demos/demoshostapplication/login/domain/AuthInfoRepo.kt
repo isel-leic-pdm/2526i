@@ -36,3 +36,25 @@ interface AuthInfoRepo {
      */
     suspend fun clearAuthInfo()
 }
+
+/**
+ * A fake implementation of AuthInfoRepo for testing and development purposes.
+ */
+class FakeAuthInfoRepo : AuthInfoRepo {
+    private var storedAuthInfo: AuthInfo? = null
+
+    override val authInfo: Flow<AuthInfo?>
+        get() = TODO("Not yet implemented")
+
+    override suspend fun saveAuthInfo(authInfo: AuthInfo) {
+        storedAuthInfo = authInfo
+    }
+
+    override suspend fun getAuthInfo(): AuthInfo? {
+        return storedAuthInfo
+    }
+
+    override suspend fun clearAuthInfo() {
+        storedAuthInfo = null
+    }
+}

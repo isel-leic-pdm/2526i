@@ -13,8 +13,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pdm.demos.demoshostapplication.R
+import pdm.demos.demoshostapplication.login.domain.FakeAuthInfoRepo
 import pdm.demos.demoshostapplication.login.domain.FakeLoginService
 import pdm.demos.demoshostapplication.login.domain.isValidCredentialsData
+import pdm.demos.demoshostapplication.login.domain.performLogin
 import pdm.demos.demoshostapplication.ui.TopBar
 
 /**
@@ -65,6 +67,10 @@ fun LoginScreen(
 fun LoginScreenPreview() {
     LoginScreen(
         onBackNavigationIntent = {},
-        viewModel = LoginScreenViewModel(service = FakeLoginService())
+        viewModel = LoginScreenViewModel(
+            loginUseCase = ::performLogin,
+            service = FakeLoginService(),
+            authRepo = FakeAuthInfoRepo()
+        )
     )
 }
