@@ -3,6 +3,7 @@ package pt.isel.pdm.pokemonoftheday.ui.common
 import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +26,7 @@ fun FullScreenPokemonDataView(p: PokemonData) {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .testTag(PokemonViewsTestTags.FSPD_VIEW_TAG),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -51,7 +51,7 @@ class HomeActivity : BaseActivity() {
                     //AboutActivity.navigate(this)
                 },
                 navToFirestorePlayground = {
-                    navigate<FirestoreActivity> { }
+                    navigate<FirestoreActivity> ()
                 },
                 viewModel = vm
             )

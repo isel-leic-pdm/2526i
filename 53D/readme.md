@@ -163,3 +163,43 @@
   * [DataStore Overview](https://developer.android.com/topic/libraries/architecture/datastore)
   * [TDD Is The Best Design Technique](https://www.youtube.com/watch?v=ln4WnxX-wrw)
   
+  
+## Week 10 - 10/11/2025
+
+### Subject: Persistent storage with Firestore and Comunication with HTTP APIs
+
+#### Topic breakdown:
+* General characterization
+  * Data model (i.e. Document DB)
+  * Documents, collections and references
+  * Supported data types
+* Description of the Android SDK API
+  * Adding, updating and deleting data
+  * Reading data: queries and observable queries
+* The Android application as a HTTP client
+  * Motivation and consequences of distribution
+  * Required permissions
+* HTTP communication with Ktor client
+  * Programming model
+  * Making assinchrounous requests
+* JSON serialization with Kotlinx Serialization
+  
+### For reference:
+* Prepare your environment for Firebase
+  * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup)
+  * [Install, configure and integrate Local Emulator Suite](https://firebase.google.com/docs/emulator-suite/install_and_configure)
+  * [Connect your app and start prototyping | Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore)
+* Firestore API
+  * [Getting started with Cloud Firestore](https://firebase.google.com/docs/firestore/quickstart)
+  * [Cloud Firestore Data model | Firebase](https://firebase.google.com/docs/firestore/data-model) 
+  * [Supported data types | Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/data-types)
+  * [Add data to Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/add-data)
+  * [Delete data from Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/manage-data/delete-data)
+  * [Get data with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/get-data)
+  * [Get real time updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
+  * [Firestore API Docs](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/package-summary)
+* [Connecting to the network](https://developer.android.com/training/basics/network-ops/connecting)
+* [Ktor Client](https://ktor.io/docs/client-create-multiplatform-application.html#ktor-dependencies)
+  * [Ktor engines](https://ktor.io/docs/client-engines.html)
+  * [Content negotiation](https://ktor.io/docs/client-serialization.html)
+  * [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)

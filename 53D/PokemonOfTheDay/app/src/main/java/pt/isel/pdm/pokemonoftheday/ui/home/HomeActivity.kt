@@ -14,14 +14,17 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.remember
 import androidx.core.os.LocaleListCompat
+import pt.isel.pdm.firebaseexplorer.screens.main.SimpleModelView
 import pt.isel.pdm.pokemonoftheday.DependencyContainer
 import pt.isel.pdm.pokemonoftheday.services.FakePokedexService
+import pt.isel.pdm.pokemonoftheday.ui.BaseActivity
 import pt.isel.pdm.pokemonoftheday.ui.about.AboutActivity
 import pt.isel.pdm.pokemonoftheday.ui.common.setAppLocale
 import pt.isel.pdm.pokemonoftheday.ui.common.viewModelInit
+import pt.isel.pdm.pokemonoftheday.ui.firestorePlayground.FirestoreActivity
 import java.util.Locale
 
-class HomeActivity : ComponentActivity() {
+class HomeActivity : BaseActivity() {
     /*
     val vm by viewModels<HomeViewModel>(
         factoryProducer = {
@@ -47,6 +50,9 @@ class HomeActivity : ComponentActivity() {
         setContent {
             HomeScreen(
                 navToAbout = { AboutActivity.navigate(this) },
+                navToFirestorePlayground = {
+                    navigate<FirestoreActivity> ()
+                },
                 viewModel = vm
             )
         }

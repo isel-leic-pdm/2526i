@@ -37,6 +37,11 @@ class HomeViewModel(
 
     var state by mutableStateOf<HomeViewState>(HomeViewState.None)
 
+    var pokemonOfTheSecond = service.getPokemonOfTheSecondFlow().stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(),
+        PokemonData.None
+    )
 
     fun refreshPokemonOfTheDay() {
         state = HomeViewState.Loading
@@ -56,13 +61,10 @@ class HomeViewModel(
         viewModelScope.launch {
             val screenState = state
             if (screenState is HomeViewState.Content) {
-                if (screenState.isFav)
-                {
+                if (screenState.isFav) {
                     favouriteService.clearFavourite()
                     state = HomeViewState.Content(screenState.pokemon, false)
-                }
-                else
-                {
+                } else {
                     favouriteService.setFavourite(screenState.pokemon.id)
                     state = HomeViewState.Content(screenState.pokemon, true)
 

@@ -20,6 +20,16 @@
             android:exported="false"
             android:label="@string/title_activity_about"
             android:theme="@style/Theme.PokemonOfTheDay" />
+        <activity
+            android:name=".ui.firestorePlayground.FirestoreActivity"
+            android:exported="false"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.PokemonOfTheDay" />
+        <activity
+            android:name=".ui.firestorePlayground.SimpleModelDetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_about"
+            android:theme="@style/Theme.PokemonOfTheDay" />
 
         <activity
             android:name=".ui.flow.FlowPlaygroundActivity"

@@ -1,6 +1,8 @@
 package pt.isel.pdm.pokemonoftheday.services
 
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 
 
@@ -14,6 +16,17 @@ class FakePokedexService : PokedexService {
 
         return Pokemons.List[idx++]
     }
+
+    override fun getPokemonOfTheSecondFlow(): Flow<PokemonData> {
+        return flow {
+            while (true) {
+                emit(Pokemons.List[(0..Pokemons.List.size - 1).random()])
+                delay(1000)
+            }
+        }
+    }
+
+
 }
 
 
