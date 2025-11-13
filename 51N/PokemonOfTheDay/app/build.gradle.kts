@@ -4,8 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
     id("kotlin-parcelize")
-
     kotlin("plugin.serialization") version "2.0.21" //ktor default serialization
+    id("com.google.devtools.ksp")  // for room
+
 }
 
 android {
@@ -73,6 +74,11 @@ dependencies {
     // --- Content negotiation & JSON ---
     implementation("io.ktor:ktor-client-content-negotiation:3.0.0")
     implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
+    implementation("io.ktor:ktor-client-logging:3.0.0")
 
+
+    implementation("androidx.room:room-runtime:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
 
 }

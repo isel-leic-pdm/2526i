@@ -17,6 +17,7 @@ import kotlinx.coroutines.withContext
 import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 import pt.isel.pdm.pokemonoftheday.services.FakePokedexService
 import pt.isel.pdm.pokemonoftheday.services.PokedexService
+import pt.isel.pdm.pokemonoftheday.services.PokemonFavouriteHistoryService
 import pt.isel.pdm.pokemonoftheday.services.PokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.services.Pokemons
 
@@ -30,7 +31,8 @@ sealed interface HomeViewState {
 
 class HomeViewModel(
     private val service: PokedexService,
-    private val pokemonFavouriteService: PokemonFavouriteService
+    private val pokemonFavouriteService: PokemonFavouriteService,
+    private val pokemonFavouriteHistoryService: PokemonFavouriteHistoryService
 ) : ViewModel() {
 
     var screenState by mutableStateOf<HomeViewState>(HomeViewState.Empty)
@@ -63,7 +65,9 @@ class HomeViewModel(
             val state = screenState
             if (state is HomeViewState.ValidPokemon) {
                 pokemonFavouriteService.set(state.pokemon.id)
+                pokemonFavouriteHistoryService.add(state.pokemon)
                 screenState = HomeViewState.ValidPokemon(state.pokemon, true)
+
             }
         }
     }

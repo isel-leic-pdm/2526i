@@ -1,5 +1,6 @@
 package pt.isel.pdm.pokemonoftheday.domain
 
+import androidx.room.Entity
 
 data class PokemonData(
     val id: Int,

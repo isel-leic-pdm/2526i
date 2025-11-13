@@ -20,6 +20,7 @@ import pt.isel.pdm.pokemonoftheday.ui.about.AboutActivity
 import pt.isel.pdm.pokemonoftheday.ui.common.setAppLocale
 import pt.isel.pdm.pokemonoftheday.ui.common.viewModelInit
 import pt.isel.pdm.pokemonoftheday.ui.firestorePlayground.FirestoreActivity
+import pt.isel.pdm.pokemonoftheday.ui.roomPlayground.RoomPlaygroundActivity
 import java.util.Locale
 
 class HomeActivity : BaseActivity() {
@@ -30,9 +31,11 @@ class HomeActivity : BaseActivity() {
 */
     val vm by viewModels<HomeViewModel> {
         viewModelInit {
+            val container = (application as DependencyContainer)
             HomeViewModel(
-                (application as DependencyContainer).pokedexService,
-                (application as DependencyContainer).pokemonFavouriteService
+                container.pokedexService,
+                container.pokemonFavouriteService,
+                container.pokemonFavouriteHistoryService
             )
 
 
@@ -51,7 +54,10 @@ class HomeActivity : BaseActivity() {
                     //AboutActivity.navigate(this)
                 },
                 navToFirestorePlayground = {
-                    navigate<FirestoreActivity> ()
+                    navigate<FirestoreActivity>()
+                },
+                navToRoomPlayground = {
+                    navigate<RoomPlaygroundActivity>()
                 },
                 viewModel = vm
             )

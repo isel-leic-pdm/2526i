@@ -3,6 +3,7 @@ package pt.isel.pdm.pokemonoftheday.ui.common
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,6 +22,7 @@ class NavigationActions(
     val onBackAction: (() -> Unit)? = null,
     val onAboutAction: (() -> Unit)? = null,
     val onFirestorePlayground : (() -> Unit)? = null,
+    val onRoomPlayground : (() -> Unit)? = null,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,6 +55,10 @@ fun CustomAppTopBar(
             ConditionalIconButton(
                 icon = Icons.Default.Warning,
                 action = navActions.onFirestorePlayground,
+            )
+            ConditionalIconButton(
+                icon = Icons.Default.Edit,
+                action = navActions.onRoomPlayground,
             )
 
         }

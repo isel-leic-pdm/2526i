@@ -8,4 +8,6 @@
     <string name="retry">retry</string>
     <string name="fav_pokemon_prefix"><![CDATA["Favourite Pokemon id is -> "]]></string>
     <string name="firestore_playground">Firestore Playground</string>
+    <string name="delete">Delete</string>
+    <string name="room_playground">Room Playground</string>
 </resources>

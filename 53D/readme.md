@@ -166,7 +166,7 @@
   
 ## Week 10 - 10/11/2025
 
-### Subject: Persistent storage with Firestore and Comunication with HTTP APIs
+### Subject: Persistent storage with Firestore 
 
 #### Topic breakdown:
 * General characterization
@@ -176,13 +176,7 @@
 * Description of the Android SDK API
   * Adding, updating and deleting data
   * Reading data: queries and observable queries
-* The Android application as a HTTP client
-  * Motivation and consequences of distribution
-  * Required permissions
-* HTTP communication with Ktor client
-  * Programming model
-  * Making assinchrounous requests
-* JSON serialization with Kotlinx Serialization
+
   
 ### For reference:
 * Prepare your environment for Firebase
@@ -198,8 +192,34 @@
   * [Get data with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/get-data)
   * [Get real time updates with Cloud Firestore | Firebase](https://firebase.google.com/docs/firestore/query-data/listen)
   * [Firestore API Docs](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/package-summary)
+
+
+## Week 11 - 17/11/2025
+
+### Subject: Comunication with HTTP APIs and Persistent storage with Room
+
+#### Topic breakdown:
+* The Android application as a HTTP client
+  * Motivation and consequences of distribution
+  * Required permissions
+* HTTP communication with Ktor client
+  * Programming model
+  * Making assinchrounous requests
+* JSON serialization with Kotlinx Serialization
+* Discussion, should we use Databases on mobile applications?
+* Room characterization
+  * Base components and systems
+  * Integration workflow
+  * One to many relations
+
+### For reference:
 * [Connecting to the network](https://developer.android.com/training/basics/network-ops/connecting)
 * [Ktor Client](https://ktor.io/docs/client-create-multiplatform-application.html#ktor-dependencies)
   * [Ktor engines](https://ktor.io/docs/client-engines.html)
   * [Content negotiation](https://ktor.io/docs/client-serialization.html)
   * [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html)
+* [Room](https://developer.android.com/training/data-storage/room#)
+* [Database](https://developer.android.com/training/data-storage/room#database)
+* [Entities](https://developer.android.com/training/data-storage/room/defining-data)
+* [DAOs](https://developer.android.com/training/data-storage/room/accessing-data)
+* [Define relationships between objects](https://developer.android.com/training/data-storage/room/relationships)

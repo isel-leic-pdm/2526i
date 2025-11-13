@@ -10,4 +10,7 @@
     <string name="title_activity_firestore">FirestoreActivity</string>
     <string name="firestore_playground">Firestore Playground</string>
     <string name="title_activity_simple_model_detail">SimpleModelDetailActivity</string>
+    <string name="title_activity_room_playground">RoomPlayground</string>
+    <string name="delete">Delete</string>
+    <string name="room_playground">Room Playground</string>
 </resources>
