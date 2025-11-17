@@ -36,6 +36,7 @@ import pt.isel.pdm.pokemonoftheday.ui.theme.PokemonOfTheDayTheme
 fun HomeScreen(
     navToAbout: () -> Unit,
     navToFirestorePlayground: () -> Unit,
+    navToRoomPlayground: () -> Unit,
     viewModel: HomeViewModel
 ) {
     PokemonOfTheDayTheme {
@@ -44,7 +45,8 @@ fun HomeScreen(
                 CustomAppTopBar(
                     navActions = NavigationActions(
                         onAboutAction = navToAbout,
-                        onFirestorePlayground = navToFirestorePlayground
+                        onFirestorePlayground = navToFirestorePlayground,
+                        onRoomPlayground =  navToRoomPlayground
                     )
                 )
             }

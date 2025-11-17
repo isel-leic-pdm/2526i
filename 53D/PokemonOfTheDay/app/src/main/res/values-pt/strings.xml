@@ -7,4 +7,6 @@
     <string name="retry">retry</string>
     <string name="FavouritePrefix">"The fav pokemon is  "</string>
     <string name="firestore_playground">Firestore Playground</string>
+    <string name="room_playground">Room Playground</string>
+    <string name="delete">Delete</string>
 </resources>
