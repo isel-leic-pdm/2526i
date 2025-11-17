@@ -225,3 +225,19 @@
 
 #### Lecture video:
 * [Lecture 10 - Persistency with Firestore](https://www.youtube.com/watch?v=YNLyt8wTXBk&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=9)
+
+## Week 11 - 17/11/2025
+### Subject: Automated Tests, revisited
+* Testing ViewModel components
+  * Testing coroutines
+  * Testing Flows
+* Test doubles in Android
+  * Mocks, stubs and fakes
+
+### For reference:
+* [What to test | Android Developers](https://developer.android.com/training/testing/fundamentals/what-to-test)
+* [Use test doubles | Android Developers](https://developer.android.com/training/testing/fundamentals/test-doubles)
+* [Testing Kotlin coroutines on Android | Android Developers](https://developer.android.com/kotlin/coroutines/test)
+* [Testing Kotlin flows on Android | Android Developers](https://developer.android.com/kotlin/flow/test)
+* [Mocks Aren't Stubs | Martin Fowler](https://martinfowler.com/articles/mocksArentStubs.html)
+* [MockK - Mocking library for Kotlin](https://mockk.io)

@@ -53,6 +53,11 @@ class JokeOfDayScreenViewModel(val jokeService: JokesService) : ViewModel() {
 
     /**
      * When instantiated, starts collecting jokes from the service to update the screen state.
+     *
+     * DESIGN NOTE: The ViewModel starts collecting from the service as soon as it is created.
+     * This is a poor design because it makes testing more difficult than needed.
+     * A better design would be to start the collection explicitly through a method call,
+     * allowing tests to control when the collection starts.
      */
     init {
         viewModelScope.launch {
