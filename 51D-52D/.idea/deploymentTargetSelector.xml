@@ -4,14 +4,16 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="TopBarTests">
-        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-11-16T23:22:16.246245Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/palbp/.android/avd/Pixel_9a.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="Tests in 'pdm.demos.demoshostapplication'">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="ConfigurationViewTests">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="minus_button_is_disabled_when_at_minimum()">
