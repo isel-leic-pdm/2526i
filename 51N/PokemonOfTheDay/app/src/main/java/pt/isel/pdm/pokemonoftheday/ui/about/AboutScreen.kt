@@ -72,7 +72,7 @@ fun AboutScreen(
                     )
 
                     if (favPokemonId != null)
-                        Text(stringResource(R.string.fav_pokemon_prefix) + favPokemonId)
+                        Text(stringResource(R.string.fav_pokemon_prefix) + favPokemonId, modifier = Modifier.testTag("favPokemon"))
                 }
 
             }

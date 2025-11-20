@@ -10,6 +10,8 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.savedstate.SavedStateRegistryOwner
 
 /**
@@ -60,3 +62,26 @@ fun <T> viewModelInit(block: () -> T) =
         }
     }
 
+fun <T : ViewModel> SavedStateRegistryOwner.viewModelInitWithSavedState(
+    block: (SavedStateHandle) -> T
+) = initWithSavedStateRegistryOwner(this, block)
+
+
+
+@Suppress("UNCHECKED_CAST")
+fun <T : ViewModel> initWithSavedStateRegistryOwner(
+    owner: SavedStateRegistryOwner,
+    block: (SavedStateHandle) -> T
+): ViewModelProvider.Factory {
+
+    return object : ViewModelProvider.Factory {
+        override fun <VM : ViewModel> create(
+            modelClass: Class<VM>,
+            extras: CreationExtras
+        ): VM {
+            val handle = extras.createSavedStateHandle()
+
+            return block(handle) as VM
+        }
+    }
+}

@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import pt.isel.pdm.pokemonoftheday.services.FakePokemonFavouriteService
 import pt.isel.pdm.pokemonoftheday.ui.common.CustomAppTopBarTestTags
 import pt.isel.pdm.pokemonoftheday.ui.common.CustomAppTopBarTests
 
@@ -23,9 +24,11 @@ class AboutScreenTests {
 
         var buttonPressed = false
         composeRule.setContent {
-            AboutScreen({
-                buttonPressed = true
-            })
+            AboutScreen(
+                AboutViewModel(FakePokemonFavouriteService()),
+                {
+                    buttonPressed = true
+                })
         }
 
         composeRule.onNodeWithTag(CustomAppTopBarTestTags.BACK_BUTTON)

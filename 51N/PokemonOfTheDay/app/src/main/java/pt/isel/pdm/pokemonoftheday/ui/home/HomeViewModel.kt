@@ -4,12 +4,15 @@ import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.saveable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -30,14 +33,23 @@ sealed interface HomeViewState {
 }
 
 class HomeViewModel(
+    private val savedStateHandle: SavedStateHandle,
     private val service: PokedexService,
     private val pokemonFavouriteService: PokemonFavouriteService,
     private val pokemonFavouriteHistoryService: PokemonFavouriteHistoryService
 ) : ViewModel() {
 
+    //var refreshes by mutableStateOf(savedStateHandle.get("refreshes") ?: 0)
+
+    var refreshes by savedStateHandle.saveable {
+        mutableStateOf(0)
+    }
+
     var screenState by mutableStateOf<HomeViewState>(HomeViewState.Empty)
 
+
     val secondPokemon = service.pokemonOfTheSecond
+        .catch { } //PokeApi sometimes returns 500, this avois any crashes, Hammer
         .stateIn(
             viewModelScope,
             SharingStarted.Lazily,
@@ -46,6 +58,10 @@ class HomeViewModel(
 
     fun refreshPokemonOfTheDay() {
         screenState = HomeViewState.Loading
+
+        refreshes++
+        //savedStateHandle.set("refreshes", refreshes)
+
         viewModelScope.launch {
             try {
                 val pokemon = service.getPokemonOfTheDay()
@@ -64,9 +80,16 @@ class HomeViewModel(
         viewModelScope.launch {
             val state = screenState
             if (state is HomeViewState.ValidPokemon) {
-                pokemonFavouriteService.set(state.pokemon.id)
-                pokemonFavouriteHistoryService.add(state.pokemon)
-                screenState = HomeViewState.ValidPokemon(state.pokemon, true)
+
+                val isCurrFav = state.pokemon.id == pokemonFavouriteService.currentFavourite.first()
+                if (isCurrFav)
+                    pokemonFavouriteService.clear()
+                else {
+                    pokemonFavouriteService.set(state.pokemon.id)
+                    pokemonFavouriteHistoryService.add(state.pokemon)
+                }
+
+                screenState = HomeViewState.ValidPokemon(state.pokemon, !isCurrFav)
 
             }
         }

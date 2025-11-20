@@ -58,7 +58,7 @@ class PokemonOfTheDayApplication : Application(), DependencyContainer {
                 //logger = io.ktor.client.plugins.logging.Logger.ANDROID
                 logger = object : io.ktor.client.plugins.logging.Logger {
                     override fun log(message: String) {
-                        Log.d("KtorClient", message)
+                        //Log.d("KtorClient", message)
                     }
 
                 }
