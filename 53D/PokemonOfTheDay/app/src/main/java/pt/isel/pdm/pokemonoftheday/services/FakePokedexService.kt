@@ -8,8 +8,13 @@ import pt.isel.pdm.pokemonoftheday.domain.PokemonData
 
 class FakePokedexService : PokedexService {
     var idx = 0
+    private var throwErrorOnAllRequests = false
+
     override suspend fun getPokemonOfTheDay(): PokemonData {
         delay(1000)
+
+        if (throwErrorOnAllRequests)
+            throw Exception("Forced Error")
 
         if (idx > Pokemons.List.size)
             idx = 0
@@ -20,12 +25,18 @@ class FakePokedexService : PokedexService {
     override fun getPokemonOfTheSecondFlow(): Flow<PokemonData> {
         return flow {
             while (true) {
+                if (throwErrorOnAllRequests)
+                    throw Exception("Forced Error")
+
                 emit(Pokemons.List[(0..Pokemons.List.size - 1).random()])
                 delay(1000)
             }
         }
     }
 
+    fun setErrorOnAllRequests() {
+        throwErrorOnAllRequests = true
+    }
 
 }
 

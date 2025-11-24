@@ -1,28 +1,32 @@
 package pt.isel.pdm.pokemonoftheday.ui.common
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import pt.isel.pdm.pokemonoftheday.R
+import java.time.LocalTime
 
 class NavigationActions(
     val onBackAction: (() -> Unit)? = null,
     val onAboutAction: (() -> Unit)? = null,
-    val onFirestorePlayground : (() -> Unit)? = null,
-    val onRoomPlayground : (() -> Unit)? = null,
+    val onFirestorePlayground: (() -> Unit)? = null,
+    val onRoomPlayground: (() -> Unit)? = null,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -87,4 +91,23 @@ object CustomAppTopBarTestTags {
     const val ABOUT_BUTTON = "ABOUT_BUTTON"
     const val BACK_BUTTON = "BACK_BUTTON"
     const val TITLE_TEXT = "TITLE_TEXT"
+}
+
+@Composable
+fun DebounceButton(
+    onClick: () -> Unit,
+    content: @Composable RowScope.() -> Unit
+) {
+    var timePressed = remember { LocalTime.now() }
+    Button(
+        onClick = {
+            val secondsPassed = LocalTime.now().toSecondOfDay() - timePressed.toSecondOfDay()
+            if (secondsPassed < 2)
+                return@Button
+
+            timePressed = LocalTime.now()
+            onClick()
+        },
+        content = content
+    )
 }

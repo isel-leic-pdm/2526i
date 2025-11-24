@@ -78,7 +78,9 @@ fun HomeScreen(
 
 
                         }
-                        Button(onClick = { viewModel.refreshPokemonOfTheDay() }) { }
+                        Button(onClick = { viewModel.refreshPokemonOfTheDay() }) {
+                            Text("Refreshes ${viewModel.refreshes}")
+                        }
                     }
 
                     is HomeViewState.Loading -> {

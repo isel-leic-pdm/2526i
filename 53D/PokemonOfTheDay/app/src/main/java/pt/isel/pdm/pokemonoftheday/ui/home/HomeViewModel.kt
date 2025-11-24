@@ -4,10 +4,13 @@ import android.R
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.saveable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -32,11 +35,13 @@ sealed interface HomeViewState {
 }
 
 class HomeViewModel(
+    private val sessionState: SavedStateHandle,
     private val service: PokedexService,
     private val favouriteService: PokemonFavouriteService,
     private val favouriteHistoryService: PokemonFavouriteHistoryService
 ) : ViewModel() {
 
+    val REFRESHES_KEY = "refreshes"
     var state by mutableStateOf<HomeViewState>(HomeViewState.None)
 
     var pokemonOfTheSecond = service.getPokemonOfTheSecondFlow().stateIn(
@@ -45,8 +50,15 @@ class HomeViewModel(
         PokemonData.None
     )
 
-    fun refreshPokemonOfTheDay() {
+    //var refreshes by mutableStateOf(sessionState.get(REFRESHES_KEY) ?: 0)
+    var refreshes by sessionState.saveable() {
+        mutableStateOf(0)
+    }
+
+    fun refreshPokemonOfTheDay()  {
         state = HomeViewState.Loading
+        refreshes++
+        //sessionState.set(REFRESHES_KEY, refreshes)
         viewModelScope
             .launch {
                 try {

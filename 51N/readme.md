@@ -247,3 +247,15 @@
 * [Entities](https://developer.android.com/training/data-storage/room/defining-data)
 * [DAOs](https://developer.android.com/training/data-storage/room/accessing-data)
 * [Define relationships between objects](https://developer.android.com/training/data-storage/room/relationships)
+
+## Week 11 - 17/11/2025 
+### Subject: Saving transient state & ViewModel testing (cont)
+
+#### Topic breakdown:
+* Application and server logic
+* Storing Transient state on ViewModels
+
+### For reference:
+ * [SavedStateHandle API Reference](https://developer.android.com/reference/androidx/lifecycle/SavedStateHandle)
+ * [Saved State module for ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate)
+ 
