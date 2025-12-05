@@ -241,3 +241,33 @@
 * [Testing Kotlin flows on Android | Android Developers](https://developer.android.com/kotlin/flow/test)
 * [Mocks Aren't Stubs | Martin Fowler](https://martinfowler.com/articles/mocksArentStubs.html)
 * [MockK - Mocking library for Kotlin](https://mockk.io)
+
+#### Lecture video:
+* [Lecture 11 - Automated Tests, revisited](https://www.youtube.com/watch?v=tfW6VUTvC3M&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=10)
+
+## Week 12 - 24/11/2025
+### Subject: Background work
+* User facing vs non-user facing work (background work)
+* Background work in Android
+  * Use cases and constraints
+* Overview of background work APIs in Android
+  * WorkManager API
+  * Foreground services
+
+### For reference:
+* [Processes and app lifecycle | Android Developers](https://developer.android.com/guide/components/activities/process-lifecycle)
+* [Background tasks overview | Android Developers](https://developer.android.com/develop/background-work/background-tasks)
+* [Task Scheduling | Android Developers](https://developer.android.com/develop/background-work/background-tasks/persistent)
+* [Foreground services overview| Android Developers](https://developer.android.com/develop/background-work/services/fgs)
+
+#### Lecture video:
+* [Lecture 12 - Background work](https://www.youtube.com/watch?v=TlOMZs6gOsg&list=PL8XxoCaL3dBhQsQz35tCkcasNLAp5NnhA&index=11)
+
+## Week 13 - 01/12/2025
+### Subject: Work on course project
+* No lecture
+
+## Week 14 - 08/12/2025
+### Subject: Work on course project
+* No lecture
+

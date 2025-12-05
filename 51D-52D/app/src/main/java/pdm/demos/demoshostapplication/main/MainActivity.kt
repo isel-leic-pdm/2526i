@@ -1,6 +1,7 @@
 package pdm.demos.demoshostapplication.main
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
